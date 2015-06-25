@@ -23,9 +23,12 @@ LDFLAGS+=-Tetc/stm32f30_flash.ld
 # LDFLAGS+=-Tetc/STM32F334X8_FLASH.ld
 
 SRCS=src/main.c
-# SRCS+=src/signal.c
 SRCS+=src/misc.c
 SRCS+=src/led.c
+SRCS+=src/adc.c
+SRCS+=src/dac.c
+SRCS+=src/button.c
+SRCS+=src/timer.c
 
 SRCS+=src/system_stm32f3xx.c
 SRCS+=src/startup_stm32f334x8.s

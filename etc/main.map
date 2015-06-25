@@ -2,6 +2,12 @@ Archive member included to satisfy reference by file (symbol)
 
 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_lshrdi3.o)
                               obj/stm32f3xx_hal_flash.o (__aeabi_llsr)
+/mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_arm_addsubdf3.o)
+                              obj/adc.o (__aeabi_f2d)
+/mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_arm_muldivdf3.o)
+                              obj/adc.o (__aeabi_dmul)
+/mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_arm_fixdfsi.o)
+                              obj/adc.o (__aeabi_d2iz)
 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/libc.a(lib_a-atexit.o)
                               /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/crt0.o (atexit)
 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/libc.a(lib_a-exit.o)
@@ -56,8 +62,12 @@ Archive member included to satisfy reference by file (symbol)
 Allocating common symbols
 Common symbol       size              file
 
+tim2handle          0x3c              obj/timer.o
 errno               0x4               /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/libc.a(lib_a-reent.o)
+dacChannel          0x8               obj/dac.o
 pFlash              0x20              obj/stm32f3xx_hal_flash.o
+AdcHandle           0x4c              obj/adc.o
+dacHandle           0x14              obj/dac.o
 
 Discarded input sections
 
@@ -75,26 +85,6 @@ Discarded input sections
  .text          0x0000000000000000        0x0 obj/main.o
  .data          0x0000000000000000        0x0 obj/main.o
  .bss           0x0000000000000000        0x0 obj/main.o
- .text.DAC_Start
-                0x0000000000000000       0x64 obj/main.o
- .text.DAC_SetValue12
-                0x0000000000000000       0x10 obj/main.o
- .text.TIM2_Start
-                0x0000000000000000       0x40 obj/main.o
- .text.adc_init
-                0x0000000000000000       0x88 obj/main.o
- .text.HAL_ADC_MspInit
-                0x0000000000000000       0x58 obj/main.o
- .text.HAL_DAC_MspInit
-                0x0000000000000000       0x18 obj/main.o
- .text.HAL_DAC_MspDeInit
-                0x0000000000000000       0x10 obj/main.o
- .text.HAL_TIM_Base_MspInit
-                0x0000000000000000       0x10 obj/main.o
- .text.HAL_TIM_Base_MspDeInit
-                0x0000000000000000       0x10 obj/main.o
- .bss.dacChannel
-                0x0000000000000000        0x8 obj/main.o
  .text          0x0000000000000000        0x0 obj/misc.o
  .data          0x0000000000000000        0x0 obj/misc.o
  .bss           0x0000000000000000        0x0 obj/misc.o
@@ -105,6 +95,32 @@ Discarded input sections
                 0x0000000000000000        0xc obj/led.o
  .text.LED2_Toggle
                 0x0000000000000000        0xc obj/led.o
+ .text          0x0000000000000000        0x0 obj/adc.o
+ .data          0x0000000000000000        0x0 obj/adc.o
+ .bss           0x0000000000000000        0x0 obj/adc.o
+ .text          0x0000000000000000        0x0 obj/dac.o
+ .data          0x0000000000000000        0x0 obj/dac.o
+ .bss           0x0000000000000000        0x0 obj/dac.o
+ .text.DAC_SetValue8
+                0x0000000000000000       0x10 obj/dac.o
+ .text.HAL_DAC_MspDeInit
+                0x0000000000000000       0x10 obj/dac.o
+ .text          0x0000000000000000        0x0 obj/button.o
+ .data          0x0000000000000000        0x0 obj/button.o
+ .bss           0x0000000000000000        0x0 obj/button.o
+ .text.Button2_Init
+                0x0000000000000000       0x34 obj/button.o
+ .text.Button2_Pressed
+                0x0000000000000000        0x2 obj/button.o
+ .text          0x0000000000000000        0x0 obj/timer.o
+ .data          0x0000000000000000        0x0 obj/timer.o
+ .bss           0x0000000000000000        0x0 obj/timer.o
+ .text.TIM2_Start
+                0x0000000000000000       0x40 obj/timer.o
+ .text.HAL_TIM_Base_MspInit
+                0x0000000000000000       0x10 obj/timer.o
+ .text.HAL_TIM_Base_MspDeInit
+                0x0000000000000000       0x10 obj/timer.o
  .text          0x0000000000000000        0x0 obj/system_stm32f3xx.o
  .data          0x0000000000000000        0x0 obj/system_stm32f3xx.o
  .bss           0x0000000000000000        0x0 obj/system_stm32f3xx.o
@@ -246,12 +262,6 @@ Discarded input sections
                 0x0000000000000000        0x6 obj/stm32f3xx_hal_adc_ex.o
  .text.ADC_DMAConvCplt
                 0x0000000000000000       0x26 obj/stm32f3xx_hal_adc_ex.o
- .text.ADC_Disable
-                0x0000000000000000       0x6c obj/stm32f3xx_hal_adc_ex.o
- .text.ADC_Enable
-                0x0000000000000000       0x58 obj/stm32f3xx_hal_adc_ex.o
- .text.HAL_ADC_Init
-                0x0000000000000000      0x16c obj/stm32f3xx_hal_adc_ex.o
  .text.HAL_ADC_DeInit
                 0x0000000000000000      0x18c obj/stm32f3xx_hal_adc_ex.o
  .text.HAL_ADC_Start
@@ -262,8 +272,6 @@ Discarded input sections
                 0x0000000000000000       0x6c obj/stm32f3xx_hal_adc_ex.o
  .text.HAL_ADC_PollForEvent
                 0x0000000000000000       0x92 obj/stm32f3xx_hal_adc_ex.o
- .text.HAL_ADC_Start_IT
-                0x0000000000000000       0x78 obj/stm32f3xx_hal_adc_ex.o
  .text.HAL_ADC_Stop_IT
                 0x0000000000000000       0x40 obj/stm32f3xx_hal_adc_ex.o
  .text.HAL_ADC_Start_DMA
@@ -294,8 +302,6 @@ Discarded input sections
                 0x0000000000000000        0xc obj/stm32f3xx_hal_adc_ex.o
  .text.HAL_ADCEx_InjectedGetValue
                 0x0000000000000000       0x2a obj/stm32f3xx_hal_adc_ex.o
- .text.HAL_ADC_ConfigChannel
-                0x0000000000000000      0x2d8 obj/stm32f3xx_hal_adc_ex.o
  .text.HAL_ADCEx_InjectedConfigChannel
                 0x0000000000000000      0x36c obj/stm32f3xx_hal_adc_ex.o
  .text.HAL_ADC_AnalogWDGConfig
@@ -313,8 +319,6 @@ Discarded input sections
  .bss           0x0000000000000000        0x0 obj/stm32f3xx_hal_dac.o
  .text.HAL_DAC_MspInit
                 0x0000000000000000        0x2 obj/stm32f3xx_hal_dac.o
- .text.HAL_DAC_Init
-                0x0000000000000000       0x20 obj/stm32f3xx_hal_dac.o
  .text.HAL_DAC_MspDeInit
                 0x0000000000000000        0x2 obj/stm32f3xx_hal_dac.o
  .text.HAL_DAC_DeInit
@@ -329,8 +333,6 @@ Discarded input sections
                 0x0000000000000000        0x4 obj/stm32f3xx_hal_dac.o
  .text.HAL_DACEx_DualGetValue
                 0x0000000000000000        0x4 obj/stm32f3xx_hal_dac.o
- .text.HAL_DAC_ConfigChannel
-                0x0000000000000000       0x3e obj/stm32f3xx_hal_dac.o
  .text.HAL_DAC_SetValue
                 0x0000000000000000        0x4 obj/stm32f3xx_hal_dac.o
  .text.HAL_DACEx_DualSetValue
@@ -347,18 +349,6 @@ Discarded input sections
                 0x0000000000000000        0x2 obj/stm32f3xx_hal_dac.o
  .text.HAL_DAC_DMAUnderrunCallbackCh1
                 0x0000000000000000        0x2 obj/stm32f3xx_hal_dac.o
- .debug_info    0x0000000000000000      0x812 obj/stm32f3xx_hal_dac.o
- .debug_abbrev  0x0000000000000000      0x1a9 obj/stm32f3xx_hal_dac.o
- .debug_loc     0x0000000000000000      0x2c7 obj/stm32f3xx_hal_dac.o
- .debug_aranges
-                0x0000000000000000       0xa8 obj/stm32f3xx_hal_dac.o
- .debug_ranges  0x0000000000000000       0x98 obj/stm32f3xx_hal_dac.o
- .debug_line    0x0000000000000000      0x3b2 obj/stm32f3xx_hal_dac.o
- .debug_str     0x0000000000000000      0x69f obj/stm32f3xx_hal_dac.o
- .comment       0x0000000000000000       0x12 obj/stm32f3xx_hal_dac.o
- .debug_frame   0x0000000000000000      0x15c obj/stm32f3xx_hal_dac.o
- .ARM.attributes
-                0x0000000000000000       0x39 obj/stm32f3xx_hal_dac.o
  .text          0x0000000000000000        0x0 obj/stm32f3xx_hal_dac_ex.o
  .data          0x0000000000000000        0x0 obj/stm32f3xx_hal_dac_ex.o
  .bss           0x0000000000000000        0x0 obj/stm32f3xx_hal_dac_ex.o
@@ -368,8 +358,6 @@ Discarded input sections
                 0x0000000000000000        0x6 obj/stm32f3xx_hal_dac_ex.o
  .text.DAC_DMAConvCpltCh1
                 0x0000000000000000       0x10 obj/stm32f3xx_hal_dac_ex.o
- .text.HAL_DAC_Start
-                0x0000000000000000       0x5a obj/stm32f3xx_hal_dac_ex.o
  .text.HAL_DAC_Start_DMA
                 0x0000000000000000       0xcc obj/stm32f3xx_hal_dac_ex.o
  .text.HAL_DAC_GetValue
@@ -748,6 +736,8 @@ Discarded input sections
  .bss           0x0000000000000000        0x0 obj/stm32f3xx_nucleo.o
  .text.BSP_GetVersion
                 0x0000000000000000        0x8 obj/stm32f3xx_nucleo.o
+ .text.BSP_LED_On
+                0x0000000000000000       0x14 obj/stm32f3xx_nucleo.o
  .text.BSP_LED_Toggle
                 0x0000000000000000       0x10 obj/stm32f3xx_nucleo.o
  .text.BSP_PB_GetState
@@ -775,6 +765,12 @@ Discarded input sections
                 0x0000000000000000       0x20 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_lshrdi3.o)
  .ARM.attributes
                 0x0000000000000000       0x27 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_lshrdi3.o)
+ .data          0x0000000000000000        0x0 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_arm_addsubdf3.o)
+ .bss           0x0000000000000000        0x0 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_arm_addsubdf3.o)
+ .data          0x0000000000000000        0x0 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_arm_muldivdf3.o)
+ .bss           0x0000000000000000        0x0 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_arm_muldivdf3.o)
+ .data          0x0000000000000000        0x0 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_arm_fixdfsi.o)
+ .bss           0x0000000000000000        0x0 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_arm_fixdfsi.o)
  .text          0x0000000000000000       0x20 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/libc.a(lib_a-atexit.o)
  .data          0x0000000000000000        0x0 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/libc.a(lib_a-atexit.o)
  .bss           0x0000000000000000        0x0 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/libc.a(lib_a-atexit.o)
@@ -954,6 +950,10 @@ END GROUP
 LOAD obj/main.o
 LOAD obj/misc.o
 LOAD obj/led.o
+LOAD obj/adc.o
+LOAD obj/dac.o
+LOAD obj/button.o
+LOAD obj/timer.o
 LOAD obj/system_stm32f3xx.o
 LOAD obj/startup_stm32f334x8.o
 LOAD obj/stm32f3xx_it.o
@@ -987,353 +987,414 @@ LOAD /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/crtn.o
                 0x0000000008000000                g_pfnVectors
                 0x0000000008000188                . = ALIGN (0x4)
 
-.text           0x0000000008000188     0x1488
+.text           0x0000000008000188     0x242c
                 0x0000000008000188                . = ALIGN (0x4)
  *(.text)
  .text          0x0000000008000188       0xa4 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/crtbegin.o
- .text          0x000000000800022c       0x70 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/libc.a(lib_a-init.o)
-                0x000000000800022c                __libc_init_array
+ .text          0x000000000800022c      0x370 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_arm_addsubdf3.o)
+                0x000000000800022c                __aeabi_drsub
+                0x0000000008000234                __aeabi_dsub
+                0x0000000008000234                __subdf3
+                0x0000000008000238                __adddf3
+                0x0000000008000238                __aeabi_dadd
+                0x00000000080004b0                __aeabi_ui2d
+                0x00000000080004b0                __floatunsidf
+                0x00000000080004d0                __floatsidf
+                0x00000000080004d0                __aeabi_i2d
+                0x00000000080004f4                __extendsfdf2
+                0x00000000080004f4                __aeabi_f2d
+                0x0000000008000530                __aeabi_ul2d
+                0x0000000008000530                __floatundidf
+                0x0000000008000540                __floatdidf
+                0x0000000008000540                __aeabi_l2d
+ .text          0x000000000800059c      0x424 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_arm_muldivdf3.o)
+                0x000000000800059c                __aeabi_dmul
+                0x000000000800059c                __muldf3
+                0x00000000080007f0                __aeabi_ddiv
+                0x00000000080007f0                __divdf3
+ .text          0x00000000080009c0       0x50 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_arm_fixdfsi.o)
+                0x00000000080009c0                __fixdfsi
+                0x00000000080009c0                __aeabi_d2iz
+ .text          0x0000000008000a10       0x70 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/libc.a(lib_a-init.o)
+                0x0000000008000a10                __libc_init_array
  *(.text*)
- .text.DAC_SetValue8
-                0x000000000800029c       0x10 obj/main.o
-                0x000000000800029c                DAC_SetValue8
- .text.pc3_int_init
-                0x00000000080002ac       0x58 obj/main.o
-                0x00000000080002ac                pc3_int_init
- .text.TIM2_IRQHandler
-                0x0000000008000304        0xc obj/main.o
-                0x0000000008000304                TIM2_IRQHandler
- .text.EXTI15_10_IRQHandler
-                0x0000000008000310       0x24 obj/main.o
-                0x0000000008000310                EXTI15_10_IRQHandler
- .text.EXTI1_IRQHandler
-                0x0000000008000334       0x24 obj/main.o
-                0x0000000008000334                EXTI1_IRQHandler
- .text.EXTI3_IRQHandler
-                0x0000000008000358       0x24 obj/main.o
-                0x0000000008000358                EXTI3_IRQHandler
- .text.ADC1_2_IRQHandler
-                0x000000000800037c       0x68 obj/main.o
-                0x000000000800037c                ADC1_2_IRQHandler
  .text.startup.main
-                0x00000000080003e4       0x48 obj/main.o
-                0x00000000080003e4                main
+                0x0000000008000a80       0x30 obj/main.o
+                0x0000000008000a80                main
  .text.Error_Handler
-                0x000000000800042c       0x2e obj/misc.o
-                0x000000000800042c                Error_Handler
- *fill*         0x000000000800045a        0x2 
- .text.LED1_ON  0x000000000800045c       0x10 obj/led.o
-                0x000000000800045c                LED1_ON
+                0x0000000008000ab0       0x32 obj/misc.o
+                0x0000000008000ab0                Error_Handler
+ *fill*         0x0000000008000ae2        0x2 
+ .text.LED_Init
+                0x0000000008000ae4       0x3c obj/led.o
+                0x0000000008000ae4                LED_Init
+ .text.LED1_ON  0x0000000008000b20       0x10 obj/led.o
+                0x0000000008000b20                LED1_ON
  .text.LED1_OFF
-                0x000000000800046c       0x10 obj/led.o
-                0x000000000800046c                LED1_OFF
- .text.LED2_ON  0x000000000800047c       0x10 obj/led.o
-                0x000000000800047c                LED2_ON
+                0x0000000008000b30       0x10 obj/led.o
+                0x0000000008000b30                LED1_OFF
+ .text.LED2_ON  0x0000000008000b40       0x10 obj/led.o
+                0x0000000008000b40                LED2_ON
  .text.LED2_OFF
-                0x000000000800048c       0x10 obj/led.o
-                0x000000000800048c                LED2_OFF
+                0x0000000008000b50       0x10 obj/led.o
+                0x0000000008000b50                LED2_OFF
+ .text.ADC_Init
+                0x0000000008000b60       0x84 obj/adc.o
+                0x0000000008000b60                ADC_Init
+ *fill*         0x0000000008000be4        0x4 
+ .text.ADC1_2_IRQHandler
+                0x0000000008000be8       0xc8 obj/adc.o
+                0x0000000008000be8                ADC1_2_IRQHandler
+ .text.HAL_ADC_MspInit
+                0x0000000008000cb0       0x44 obj/adc.o
+                0x0000000008000cb0                HAL_ADC_MspInit
+ .text.DAC_Init
+                0x0000000008000cf4       0x4c obj/dac.o
+                0x0000000008000cf4                DAC_Init
+ .text.DAC_SetValue12
+                0x0000000008000d40       0x10 obj/dac.o
+                0x0000000008000d40                DAC_SetValue12
+ .text.HAL_DAC_MspInit
+                0x0000000008000d50       0x38 obj/dac.o
+                0x0000000008000d50                HAL_DAC_MspInit
+ .text.Button1_Init
+                0x0000000008000d88       0x34 obj/button.o
+                0x0000000008000d88                Button1_Init
+ .text.Button1_Pressed
+                0x0000000008000dbc       0x1c obj/button.o
+                0x0000000008000dbc                Button1_Pressed
+ .text.EXTI15_10_IRQHandler
+                0x0000000008000dd8       0x10 obj/button.o
+                0x0000000008000dd8                EXTI15_10_IRQHandler
+ .text.EXTI1_IRQHandler
+                0x0000000008000de8       0x14 obj/button.o
+                0x0000000008000de8                EXTI1_IRQHandler
+ .text.EXTI3_IRQHandler
+                0x0000000008000dfc       0x10 obj/button.o
+                0x0000000008000dfc                EXTI3_IRQHandler
+ .text.TIM2_IRQHandler
+                0x0000000008000e0c        0xc obj/timer.o
+                0x0000000008000e0c                TIM2_IRQHandler
  .text.SystemInit
-                0x000000000800049c       0x68 obj/system_stm32f3xx.o
-                0x000000000800049c                SystemInit
+                0x0000000008000e18       0x68 obj/system_stm32f3xx.o
+                0x0000000008000e18                SystemInit
  .text.SystemClock_Config
-                0x0000000008000504       0x44 obj/system_stm32f3xx.o
-                0x0000000008000504                SystemClock_Config
+                0x0000000008000e80       0x44 obj/system_stm32f3xx.o
+                0x0000000008000e80                SystemClock_Config
  .text.Reset_Handler
-                0x0000000008000548       0x50 obj/startup_stm32f334x8.o
-                0x0000000008000548                Reset_Handler
+                0x0000000008000ec4       0x50 obj/startup_stm32f334x8.o
+                0x0000000008000ec4                Reset_Handler
  .text.Default_Handler
-                0x0000000008000598        0x2 obj/startup_stm32f334x8.o
-                0x0000000008000598                RTC_Alarm_IRQHandler
-                0x0000000008000598                HRTIM1_Master_IRQHandler
-                0x0000000008000598                TIM1_CC_IRQHandler
-                0x0000000008000598                HRTIM1_FLT_IRQHandler
-                0x0000000008000598                PVD_IRQHandler
-                0x0000000008000598                HRTIM1_TIMD_IRQHandler
-                0x0000000008000598                TAMP_STAMP_IRQHandler
-                0x0000000008000598                EXTI0_IRQHandler
-                0x0000000008000598                FPU_IRQHandler
-                0x0000000008000598                CAN_TX_IRQHandler
-                0x0000000008000598                TIM1_UP_TIM16_IRQHandler
-                0x0000000008000598                HRTIM1_TIME_IRQHandler
-                0x0000000008000598                SPI1_IRQHandler
-                0x0000000008000598                CAN_SCE_IRQHandler
-                0x0000000008000598                HRTIM1_TIMC_IRQHandler
-                0x0000000008000598                DMA1_Channel4_IRQHandler
-                0x0000000008000598                USART3_IRQHandler
-                0x0000000008000598                DMA1_Channel7_IRQHandler
-                0x0000000008000598                TIM7_DAC2_IRQHandler
-                0x0000000008000598                CAN_RX1_IRQHandler
-                0x0000000008000598                I2C1_EV_IRQHandler
-                0x0000000008000598                DMA1_Channel6_IRQHandler
-                0x0000000008000598                TIM3_IRQHandler
-                0x0000000008000598                RCC_IRQHandler
-                0x0000000008000598                DMA1_Channel1_IRQHandler
-                0x0000000008000598                Default_Handler
-                0x0000000008000598                COMP2_IRQHandler
-                0x0000000008000598                HRTIM1_TIMA_IRQHandler
-                0x0000000008000598                TIM6_DAC1_IRQHandler
-                0x0000000008000598                EXTI9_5_IRQHandler
-                0x0000000008000598                RTC_WKUP_IRQHandler
-                0x0000000008000598                DMA1_Channel5_IRQHandler
-                0x0000000008000598                EXTI4_IRQHandler
-                0x0000000008000598                HRTIM1_TIMB_IRQHandler
-                0x0000000008000598                TIM1_TRG_COM_TIM17_IRQHandler
-                0x0000000008000598                DMA1_Channel3_IRQHandler
-                0x0000000008000598                WWDG_IRQHandler
-                0x0000000008000598                COMP4_6_IRQHandler
-                0x0000000008000598                USART2_IRQHandler
-                0x0000000008000598                DMA1_Channel2_IRQHandler
-                0x0000000008000598                FLASH_IRQHandler
-                0x0000000008000598                USART1_IRQHandler
-                0x0000000008000598                CAN_RX0_IRQHandler
-                0x0000000008000598                I2C1_ER_IRQHandler
-                0x0000000008000598                EXTI2_TSC_IRQHandler
-                0x0000000008000598                TIM1_BRK_TIM15_IRQHandler
+                0x0000000008000f14        0x2 obj/startup_stm32f334x8.o
+                0x0000000008000f14                RTC_Alarm_IRQHandler
+                0x0000000008000f14                HRTIM1_Master_IRQHandler
+                0x0000000008000f14                TIM1_CC_IRQHandler
+                0x0000000008000f14                HRTIM1_FLT_IRQHandler
+                0x0000000008000f14                PVD_IRQHandler
+                0x0000000008000f14                HRTIM1_TIMD_IRQHandler
+                0x0000000008000f14                TAMP_STAMP_IRQHandler
+                0x0000000008000f14                EXTI0_IRQHandler
+                0x0000000008000f14                FPU_IRQHandler
+                0x0000000008000f14                CAN_TX_IRQHandler
+                0x0000000008000f14                TIM1_UP_TIM16_IRQHandler
+                0x0000000008000f14                HRTIM1_TIME_IRQHandler
+                0x0000000008000f14                SPI1_IRQHandler
+                0x0000000008000f14                CAN_SCE_IRQHandler
+                0x0000000008000f14                HRTIM1_TIMC_IRQHandler
+                0x0000000008000f14                DMA1_Channel4_IRQHandler
+                0x0000000008000f14                USART3_IRQHandler
+                0x0000000008000f14                DMA1_Channel7_IRQHandler
+                0x0000000008000f14                TIM7_DAC2_IRQHandler
+                0x0000000008000f14                CAN_RX1_IRQHandler
+                0x0000000008000f14                I2C1_EV_IRQHandler
+                0x0000000008000f14                DMA1_Channel6_IRQHandler
+                0x0000000008000f14                TIM3_IRQHandler
+                0x0000000008000f14                RCC_IRQHandler
+                0x0000000008000f14                DMA1_Channel1_IRQHandler
+                0x0000000008000f14                Default_Handler
+                0x0000000008000f14                COMP2_IRQHandler
+                0x0000000008000f14                HRTIM1_TIMA_IRQHandler
+                0x0000000008000f14                TIM6_DAC1_IRQHandler
+                0x0000000008000f14                EXTI9_5_IRQHandler
+                0x0000000008000f14                RTC_WKUP_IRQHandler
+                0x0000000008000f14                DMA1_Channel5_IRQHandler
+                0x0000000008000f14                EXTI4_IRQHandler
+                0x0000000008000f14                HRTIM1_TIMB_IRQHandler
+                0x0000000008000f14                TIM1_TRG_COM_TIM17_IRQHandler
+                0x0000000008000f14                DMA1_Channel3_IRQHandler
+                0x0000000008000f14                WWDG_IRQHandler
+                0x0000000008000f14                COMP4_6_IRQHandler
+                0x0000000008000f14                USART2_IRQHandler
+                0x0000000008000f14                DMA1_Channel2_IRQHandler
+                0x0000000008000f14                FLASH_IRQHandler
+                0x0000000008000f14                USART1_IRQHandler
+                0x0000000008000f14                CAN_RX0_IRQHandler
+                0x0000000008000f14                I2C1_ER_IRQHandler
+                0x0000000008000f14                EXTI2_TSC_IRQHandler
+                0x0000000008000f14                TIM1_BRK_TIM15_IRQHandler
  .text.NMI_Handler
-                0x000000000800059a        0x2 obj/stm32f3xx_it.o
-                0x000000000800059a                NMI_Handler
+                0x0000000008000f16        0x2 obj/stm32f3xx_it.o
+                0x0000000008000f16                NMI_Handler
  .text.HardFault_Handler
-                0x000000000800059c        0x2 obj/stm32f3xx_it.o
-                0x000000000800059c                HardFault_Handler
+                0x0000000008000f18        0x2 obj/stm32f3xx_it.o
+                0x0000000008000f18                HardFault_Handler
  .text.MemManage_Handler
-                0x000000000800059e        0x2 obj/stm32f3xx_it.o
-                0x000000000800059e                MemManage_Handler
+                0x0000000008000f1a        0x2 obj/stm32f3xx_it.o
+                0x0000000008000f1a                MemManage_Handler
  .text.BusFault_Handler
-                0x00000000080005a0        0x2 obj/stm32f3xx_it.o
-                0x00000000080005a0                BusFault_Handler
+                0x0000000008000f1c        0x2 obj/stm32f3xx_it.o
+                0x0000000008000f1c                BusFault_Handler
  .text.UsageFault_Handler
-                0x00000000080005a2        0x2 obj/stm32f3xx_it.o
-                0x00000000080005a2                UsageFault_Handler
+                0x0000000008000f1e        0x2 obj/stm32f3xx_it.o
+                0x0000000008000f1e                UsageFault_Handler
  .text.SVC_Handler
-                0x00000000080005a4        0x2 obj/stm32f3xx_it.o
-                0x00000000080005a4                SVC_Handler
+                0x0000000008000f20        0x2 obj/stm32f3xx_it.o
+                0x0000000008000f20                SVC_Handler
  .text.DebugMon_Handler
-                0x00000000080005a6        0x2 obj/stm32f3xx_it.o
-                0x00000000080005a6                DebugMon_Handler
+                0x0000000008000f22        0x2 obj/stm32f3xx_it.o
+                0x0000000008000f22                DebugMon_Handler
  .text.PendSV_Handler
-                0x00000000080005a8        0x2 obj/stm32f3xx_it.o
-                0x00000000080005a8                PendSV_Handler
+                0x0000000008000f24        0x2 obj/stm32f3xx_it.o
+                0x0000000008000f24                PendSV_Handler
  .text.SysTick_Handler
-                0x00000000080005aa        0x4 obj/stm32f3xx_it.o
-                0x00000000080005aa                SysTick_Handler
- *fill*         0x00000000080005ae        0x2 
+                0x0000000008000f26        0x4 obj/stm32f3xx_it.o
+                0x0000000008000f26                SysTick_Handler
+ *fill*         0x0000000008000f2a        0x2 
  .text.HAL_RCC_ClockConfig
-                0x00000000080005b0      0x2c4 obj/stm32f3xx_hal_rcc.o
-                0x00000000080005b0                HAL_RCC_ClockConfig
+                0x0000000008000f2c      0x2c4 obj/stm32f3xx_hal_rcc.o
+                0x0000000008000f2c                HAL_RCC_ClockConfig
  .text.HAL_RCC_GetHCLKFreq
-                0x0000000008000874       0x38 obj/stm32f3xx_hal_rcc.o
-                0x0000000008000874                HAL_RCC_GetHCLKFreq
+                0x00000000080011f0       0x38 obj/stm32f3xx_hal_rcc.o
+                0x00000000080011f0                HAL_RCC_GetHCLKFreq
  .text.HAL_RCC_OscConfig
-                0x00000000080008ac      0x5dc obj/stm32f3xx_hal_rcc_ex.o
-                0x00000000080008ac                HAL_RCC_OscConfig
+                0x0000000008001228      0x5dc obj/stm32f3xx_hal_rcc_ex.o
+                0x0000000008001228                HAL_RCC_OscConfig
  .text.HAL_RCC_GetSysClockFreq
-                0x0000000008000e88       0x6c obj/stm32f3xx_hal_rcc_ex.o
-                0x0000000008000e88                HAL_RCC_GetSysClockFreq
+                0x0000000008001804       0x6c obj/stm32f3xx_hal_rcc_ex.o
+                0x0000000008001804                HAL_RCC_GetSysClockFreq
  .text.HAL_GPIO_Init
-                0x0000000008000ef4      0x18c obj/stm32f3xx_hal_gpio.o
-                0x0000000008000ef4                HAL_GPIO_Init
+                0x0000000008001870      0x18c obj/stm32f3xx_hal_gpio.o
+                0x0000000008001870                HAL_GPIO_Init
  .text.HAL_GPIO_WritePin
-                0x0000000008001080        0xa obj/stm32f3xx_hal_gpio.o
-                0x0000000008001080                HAL_GPIO_WritePin
- *fill*         0x000000000800108a        0x2 
+                0x00000000080019fc        0xa obj/stm32f3xx_hal_gpio.o
+                0x00000000080019fc                HAL_GPIO_WritePin
+ *fill*         0x0000000008001a06        0x2 
  .text.HAL_NVIC_SetPriorityGrouping
-                0x000000000800108c       0x24 obj/stm32f3xx_hal_cortex.o
-                0x000000000800108c                HAL_NVIC_SetPriorityGrouping
+                0x0000000008001a08       0x24 obj/stm32f3xx_hal_cortex.o
+                0x0000000008001a08                HAL_NVIC_SetPriorityGrouping
  .text.HAL_NVIC_SetPriority
-                0x00000000080010b0       0x60 obj/stm32f3xx_hal_cortex.o
-                0x00000000080010b0                HAL_NVIC_SetPriority
+                0x0000000008001a2c       0x60 obj/stm32f3xx_hal_cortex.o
+                0x0000000008001a2c                HAL_NVIC_SetPriority
  .text.HAL_NVIC_EnableIRQ
-                0x0000000008001110       0x18 obj/stm32f3xx_hal_cortex.o
-                0x0000000008001110                HAL_NVIC_EnableIRQ
+                0x0000000008001a8c       0x18 obj/stm32f3xx_hal_cortex.o
+                0x0000000008001a8c                HAL_NVIC_EnableIRQ
  .text.HAL_SYSTICK_Config
-                0x0000000008001128       0x2c obj/stm32f3xx_hal_cortex.o
-                0x0000000008001128                HAL_SYSTICK_Config
+                0x0000000008001aa4       0x2c obj/stm32f3xx_hal_cortex.o
+                0x0000000008001aa4                HAL_SYSTICK_Config
  .text.HAL_ADC_ConvCpltCallback
-                0x0000000008001154        0x2 obj/stm32f3xx_hal_adc.o
-                0x0000000008001154                HAL_ADC_ConvCpltCallback
+                0x0000000008001ad0        0x2 obj/stm32f3xx_hal_adc.o
+                0x0000000008001ad0                HAL_ADC_ConvCpltCallback
  .text.HAL_ADC_LevelOutOfWindowCallback
-                0x0000000008001156        0x2 obj/stm32f3xx_hal_adc.o
-                0x0000000008001156                HAL_ADC_LevelOutOfWindowCallback
+                0x0000000008001ad2        0x2 obj/stm32f3xx_hal_adc.o
+                0x0000000008001ad2                HAL_ADC_LevelOutOfWindowCallback
  .text.HAL_ADC_ErrorCallback
-                0x0000000008001158        0x2 obj/stm32f3xx_hal_adc.o
-                0x0000000008001158                HAL_ADC_ErrorCallback
+                0x0000000008001ad4        0x2 obj/stm32f3xx_hal_adc.o
+                0x0000000008001ad4                HAL_ADC_ErrorCallback
+ .text.ADC_Disable
+                0x0000000008001ad6       0x6c obj/stm32f3xx_hal_adc_ex.o
+ *fill*         0x0000000008001b42        0x2 
+ .text.ADC_Enable
+                0x0000000008001b44       0x58 obj/stm32f3xx_hal_adc_ex.o
+ .text.HAL_ADC_Init
+                0x0000000008001b9c      0x16c obj/stm32f3xx_hal_adc_ex.o
+                0x0000000008001b9c                HAL_ADC_Init
+ .text.HAL_ADC_Start_IT
+                0x0000000008001d08       0x78 obj/stm32f3xx_hal_adc_ex.o
+                0x0000000008001d08                HAL_ADC_Start_IT
  .text.HAL_ADC_GetValue
-                0x000000000800115a        0xa obj/stm32f3xx_hal_adc_ex.o
-                0x000000000800115a                HAL_ADC_GetValue
+                0x0000000008001d80        0xa obj/stm32f3xx_hal_adc_ex.o
+                0x0000000008001d80                HAL_ADC_GetValue
  .text.HAL_ADCEx_InjectedConvCpltCallback
-                0x0000000008001164        0x2 obj/stm32f3xx_hal_adc_ex.o
-                0x0000000008001164                HAL_ADCEx_InjectedConvCpltCallback
+                0x0000000008001d8a        0x2 obj/stm32f3xx_hal_adc_ex.o
+                0x0000000008001d8a                HAL_ADCEx_InjectedConvCpltCallback
  .text.HAL_ADCEx_InjectedQueueOverflowCallback
-                0x0000000008001166        0x2 obj/stm32f3xx_hal_adc_ex.o
-                0x0000000008001166                HAL_ADCEx_InjectedQueueOverflowCallback
+                0x0000000008001d8c        0x2 obj/stm32f3xx_hal_adc_ex.o
+                0x0000000008001d8c                HAL_ADCEx_InjectedQueueOverflowCallback
  .text.HAL_ADC_IRQHandler
-                0x0000000008001168      0x1b4 obj/stm32f3xx_hal_adc_ex.o
-                0x0000000008001168                HAL_ADC_IRQHandler
+                0x0000000008001d8e      0x1b4 obj/stm32f3xx_hal_adc_ex.o
+                0x0000000008001d8e                HAL_ADC_IRQHandler
+ *fill*         0x0000000008001f42        0x2 
+ .text.HAL_ADC_ConfigChannel
+                0x0000000008001f44      0x2d8 obj/stm32f3xx_hal_adc_ex.o
+                0x0000000008001f44                HAL_ADC_ConfigChannel
+ .text.HAL_DAC_Init
+                0x000000000800221c       0x20 obj/stm32f3xx_hal_dac.o
+                0x000000000800221c                HAL_DAC_Init
+ .text.HAL_DAC_ConfigChannel
+                0x000000000800223c       0x3e obj/stm32f3xx_hal_dac.o
+                0x000000000800223c                HAL_DAC_ConfigChannel
  .text.HAL_DAC_SetValue
-                0x000000000800131c       0x24 obj/stm32f3xx_hal_dac_ex.o
-                0x000000000800131c                HAL_DAC_SetValue
+                0x000000000800227a       0x24 obj/stm32f3xx_hal_dac_ex.o
+                0x000000000800227a                HAL_DAC_SetValue
+ .text.HAL_DAC_Start
+                0x000000000800229e       0x5a obj/stm32f3xx_hal_dac_ex.o
+                0x000000000800229e                HAL_DAC_Start
  .text.HAL_TIM_PeriodElapsedCallback
-                0x0000000008001340        0x2 obj/stm32f3xx_hal_tim.o
-                0x0000000008001340                HAL_TIM_PeriodElapsedCallback
+                0x00000000080022f8        0x2 obj/stm32f3xx_hal_tim.o
+                0x00000000080022f8                HAL_TIM_PeriodElapsedCallback
  .text.HAL_TIM_OC_DelayElapsedCallback
-                0x0000000008001342        0x2 obj/stm32f3xx_hal_tim.o
-                0x0000000008001342                HAL_TIM_OC_DelayElapsedCallback
+                0x00000000080022fa        0x2 obj/stm32f3xx_hal_tim.o
+                0x00000000080022fa                HAL_TIM_OC_DelayElapsedCallback
  .text.HAL_TIM_IC_CaptureCallback
-                0x0000000008001344        0x2 obj/stm32f3xx_hal_tim.o
-                0x0000000008001344                HAL_TIM_IC_CaptureCallback
+                0x00000000080022fc        0x2 obj/stm32f3xx_hal_tim.o
+                0x00000000080022fc                HAL_TIM_IC_CaptureCallback
  .text.HAL_TIM_PWM_PulseFinishedCallback
-                0x0000000008001346        0x2 obj/stm32f3xx_hal_tim.o
-                0x0000000008001346                HAL_TIM_PWM_PulseFinishedCallback
+                0x00000000080022fe        0x2 obj/stm32f3xx_hal_tim.o
+                0x00000000080022fe                HAL_TIM_PWM_PulseFinishedCallback
  .text.HAL_TIM_TriggerCallback
-                0x0000000008001348        0x2 obj/stm32f3xx_hal_tim.o
-                0x0000000008001348                HAL_TIM_TriggerCallback
+                0x0000000008002300        0x2 obj/stm32f3xx_hal_tim.o
+                0x0000000008002300                HAL_TIM_TriggerCallback
  .text.HAL_TIM_IRQHandler
-                0x000000000800134a      0x144 obj/stm32f3xx_hal_tim.o
-                0x000000000800134a                HAL_TIM_IRQHandler
+                0x0000000008002302      0x144 obj/stm32f3xx_hal_tim.o
+                0x0000000008002302                HAL_TIM_IRQHandler
  .text.HAL_TIMEx_CommutationCallback
-                0x000000000800148e        0x2 obj/stm32f3xx_hal_tim_ex.o
-                0x000000000800148e                HAL_TIMEx_CommutationCallback
+                0x0000000008002446        0x2 obj/stm32f3xx_hal_tim_ex.o
+                0x0000000008002446                HAL_TIMEx_CommutationCallback
  .text.HAL_TIMEx_BreakCallback
-                0x0000000008001490        0x2 obj/stm32f3xx_hal_tim_ex.o
-                0x0000000008001490                HAL_TIMEx_BreakCallback
+                0x0000000008002448        0x2 obj/stm32f3xx_hal_tim_ex.o
+                0x0000000008002448                HAL_TIMEx_BreakCallback
  .text.HAL_MspInit
-                0x0000000008001492        0x2 obj/stm32f3xx_hal.o
-                0x0000000008001492                HAL_MspInit
+                0x000000000800244a        0x2 obj/stm32f3xx_hal.o
+                0x000000000800244a                HAL_MspInit
  .text.HAL_InitTick
-                0x0000000008001494       0x24 obj/stm32f3xx_hal.o
-                0x0000000008001494                HAL_InitTick
+                0x000000000800244c       0x24 obj/stm32f3xx_hal.o
+                0x000000000800244c                HAL_InitTick
  .text.HAL_Init
-                0x00000000080014b8       0x24 obj/stm32f3xx_hal.o
-                0x00000000080014b8                HAL_Init
+                0x0000000008002470       0x24 obj/stm32f3xx_hal.o
+                0x0000000008002470                HAL_Init
  .text.HAL_IncTick
-                0x00000000080014dc       0x10 obj/stm32f3xx_hal.o
-                0x00000000080014dc                HAL_IncTick
+                0x0000000008002494       0x10 obj/stm32f3xx_hal.o
+                0x0000000008002494                HAL_IncTick
  .text.HAL_GetTick
-                0x00000000080014ec        0xc obj/stm32f3xx_hal.o
-                0x00000000080014ec                HAL_GetTick
+                0x00000000080024a4        0xc obj/stm32f3xx_hal.o
+                0x00000000080024a4                HAL_GetTick
  .text.HAL_Delay
-                0x00000000080014f8       0x1a obj/stm32f3xx_hal.o
-                0x00000000080014f8                HAL_Delay
- *fill*         0x0000000008001512        0x2 
+                0x00000000080024b0       0x1a obj/stm32f3xx_hal.o
+                0x00000000080024b0                HAL_Delay
+ *fill*         0x00000000080024ca        0x2 
  .text.BSP_LED_Init
-                0x0000000008001514       0x44 obj/stm32f3xx_nucleo.o
-                0x0000000008001514                BSP_LED_Init
- .text.BSP_LED_On
-                0x0000000008001558       0x14 obj/stm32f3xx_nucleo.o
-                0x0000000008001558                BSP_LED_On
+                0x00000000080024cc       0x44 obj/stm32f3xx_nucleo.o
+                0x00000000080024cc                BSP_LED_Init
  .text.BSP_LED_Off
-                0x000000000800156c       0x14 obj/stm32f3xx_nucleo.o
-                0x000000000800156c                BSP_LED_Off
+                0x0000000008002510       0x14 obj/stm32f3xx_nucleo.o
+                0x0000000008002510                BSP_LED_Off
  .text.BSP_PB_Init
-                0x0000000008001580       0x78 obj/stm32f3xx_nucleo.o
-                0x0000000008001580                BSP_PB_Init
+                0x0000000008002524       0x78 obj/stm32f3xx_nucleo.o
+                0x0000000008002524                BSP_PB_Init
  *(.glue_7)
- .glue_7        0x00000000080015f8        0x0 linker stubs
+ .glue_7        0x000000000800259c        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x00000000080015f8        0x0 linker stubs
+ .glue_7t       0x000000000800259c        0x0 linker stubs
  *(.eh_frame)
- .eh_frame      0x00000000080015f8        0x0 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/crtbegin.o
+ .eh_frame      0x000000000800259c        0x0 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/crtbegin.o
  *(.init)
- .init          0x00000000080015f8        0x4 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/crti.o
-                0x00000000080015f8                _init
- .init          0x00000000080015fc        0x8 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/crtn.o
+ .init          0x000000000800259c        0x4 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/crti.o
+                0x000000000800259c                _init
+ .init          0x00000000080025a0        0x8 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/crtn.o
  *(.fini)
- .fini          0x0000000008001604        0x4 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/crti.o
-                0x0000000008001604                _fini
- .fini          0x0000000008001608        0x8 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/crtn.o
-                0x0000000008001610                . = ALIGN (0x4)
-                0x0000000008001610                _etext = .
+ .fini          0x00000000080025a8        0x4 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/crti.o
+                0x00000000080025a8                _fini
+ .fini          0x00000000080025ac        0x8 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/crtn.o
+                0x00000000080025b4                . = ALIGN (0x4)
+                0x00000000080025b4                _etext = .
 
-.vfp11_veneer   0x0000000008001610        0x0
- .vfp11_veneer  0x0000000008001610        0x0 linker stubs
+.vfp11_veneer   0x00000000080025b4        0x0
+ .vfp11_veneer  0x00000000080025b4        0x0 linker stubs
 
-.v4_bx          0x0000000008001610        0x0
- .v4_bx         0x0000000008001610        0x0 linker stubs
+.v4_bx          0x00000000080025b4        0x0
+ .v4_bx         0x00000000080025b4        0x0 linker stubs
 
-.iplt           0x0000000008001610        0x0
- .iplt          0x0000000008001610        0x0 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/crtbegin.o
+.iplt           0x00000000080025b4        0x0
+ .iplt          0x00000000080025b4        0x0 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/crtbegin.o
 
-.rodata         0x0000000008001610       0x30
-                0x0000000008001610                . = ALIGN (0x4)
+.rodata         0x00000000080025b4       0x30
+                0x00000000080025b4                . = ALIGN (0x4)
  *(.rodata)
  *(.rodata*)
  .rodata.APBAHBPrescTable
-                0x0000000008001610       0x10 obj/stm32f3xx_hal_rcc.o
-                0x0000000008001610                APBAHBPrescTable
+                0x00000000080025b4       0x10 obj/stm32f3xx_hal_rcc.o
+                0x00000000080025b4                APBAHBPrescTable
  .rodata.PredivFactorTable
-                0x0000000008001620       0x10 obj/stm32f3xx_hal_rcc_ex.o
-                0x0000000008001620                PredivFactorTable
+                0x00000000080025c4       0x10 obj/stm32f3xx_hal_rcc_ex.o
+                0x00000000080025c4                PredivFactorTable
  .rodata.PLLMULFactorTable
-                0x0000000008001630       0x10 obj/stm32f3xx_hal_rcc_ex.o
-                0x0000000008001630                PLLMULFactorTable
-                0x0000000008001640                . = ALIGN (0x4)
+                0x00000000080025d4       0x10 obj/stm32f3xx_hal_rcc_ex.o
+                0x00000000080025d4                PLLMULFactorTable
+                0x00000000080025e4                . = ALIGN (0x4)
 
-.rel.dyn        0x0000000008001640        0x0
- .rel.iplt      0x0000000008001640        0x0 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/crtbegin.o
+.rel.dyn        0x00000000080025e4        0x0
+ .rel.iplt      0x00000000080025e4        0x0 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/crtbegin.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
 
-.ARM            0x0000000008001640        0x0
-                0x0000000008001640                __exidx_start = .
+.ARM            0x00000000080025e4        0x0
+                0x00000000080025e4                __exidx_start = .
  *(.ARM.exidx*)
-                0x0000000008001640                __exidx_end = .
+                0x00000000080025e4                __exidx_end = .
 
-.preinit_array  0x0000000008001640        0x0
-                0x0000000008001640                PROVIDE (__preinit_array_start, .)
+.preinit_array  0x00000000080025e4        0x0
+                0x00000000080025e4                PROVIDE (__preinit_array_start, .)
  *(.preinit_array*)
-                0x0000000008001640                PROVIDE (__preinit_array_end, .)
+                0x00000000080025e4                PROVIDE (__preinit_array_end, .)
 
-.init_array     0x0000000008001640        0x4
-                0x0000000008001640                PROVIDE (__init_array_start, .)
+.init_array     0x00000000080025e4        0x4
+                0x00000000080025e4                PROVIDE (__init_array_start, .)
  *(SORT(.init_array.*))
  *(.init_array*)
- .init_array    0x0000000008001640        0x4 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/crtbegin.o
-                0x0000000008001644                PROVIDE (__init_array_end, .)
+ .init_array    0x00000000080025e4        0x4 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/crtbegin.o
+                0x00000000080025e8                PROVIDE (__init_array_end, .)
 
-.fini_array     0x0000000008001644        0x4
-                0x0000000008001644                PROVIDE (__fini_array_start, .)
+.fini_array     0x00000000080025e8        0x4
+                0x00000000080025e8                PROVIDE (__fini_array_start, .)
  *(SORT(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x0000000008001644        0x4 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/crtbegin.o
-                0x0000000008001648                PROVIDE (__fini_array_end, .)
-                0x0000000008001648                _sidata = LOADADDR (.data)
+ .fini_array    0x00000000080025e8        0x4 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/crtbegin.o
+                0x00000000080025ec                PROVIDE (__fini_array_end, .)
+                0x00000000080025ec                _sidata = LOADADDR (.data)
 
-.data           0x0000000020000000       0x10 load address 0x0000000008001648
+.data           0x0000000020000000        0xc load address 0x00000000080025ec
                 0x0000000020000000                . = ALIGN (0x4)
                 0x0000000020000000                _sdata = .
  *(.data)
  *(.data*)
- .data.distortionEnabled
-                0x0000000020000000        0x4 obj/main.o
-                0x0000000020000000                distortionEnabled
  .data.SystemCoreClock
-                0x0000000020000004        0x4 obj/system_stm32f3xx.o
-                0x0000000020000004                SystemCoreClock
+                0x0000000020000000        0x4 obj/system_stm32f3xx.o
+                0x0000000020000000                SystemCoreClock
  .data.BUTTON_PORT
-                0x0000000020000008        0x4 obj/stm32f3xx_nucleo.o
-                0x0000000020000008                BUTTON_PORT
+                0x0000000020000004        0x4 obj/stm32f3xx_nucleo.o
+                0x0000000020000004                BUTTON_PORT
  .data.LED_PORT
-                0x000000002000000c        0x4 obj/stm32f3xx_nucleo.o
-                0x000000002000000c                LED_PORT
-                0x0000000020000010                . = ALIGN (0x4)
-                0x0000000020000010                _edata = .
-                0x0000000008001658                _siccmram = LOADADDR (.ccmram)
+                0x0000000020000008        0x4 obj/stm32f3xx_nucleo.o
+                0x0000000020000008                LED_PORT
+                0x000000002000000c                . = ALIGN (0x4)
+                0x000000002000000c                _edata = .
+                0x00000000080025f8                _siccmram = LOADADDR (.ccmram)
 
-.jcr            0x0000000020000010        0x0 load address 0x0000000008001658
- .jcr           0x0000000020000010        0x0 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/crtbegin.o
+.jcr            0x000000002000000c        0x0 load address 0x00000000080025f8
+ .jcr           0x000000002000000c        0x0 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/crtbegin.o
 
 .tm_clone_table
-                0x0000000020000010        0x0 load address 0x0000000008001658
+                0x000000002000000c        0x0 load address 0x00000000080025f8
  .tm_clone_table
-                0x0000000020000010        0x0 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/crtbegin.o
+                0x000000002000000c        0x0 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/crtbegin.o
  .tm_clone_table
-                0x0000000020000010        0x0 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/crtend.o
+                0x000000002000000c        0x0 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/crtend.o
 
-.igot.plt       0x0000000020000010        0x0 load address 0x0000000008001658
- .igot.plt      0x0000000020000010        0x0 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/crtbegin.o
+.igot.plt       0x000000002000000c        0x0 load address 0x00000000080025f8
+ .igot.plt      0x000000002000000c        0x0 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/crtbegin.o
 
-.ccmram         0x0000000010000000        0x0 load address 0x0000000008001658
+.ccmram         0x0000000010000000        0x0 load address 0x00000000080025f8
                 0x0000000010000000                . = ALIGN (0x4)
                 0x0000000010000000                _sccmram = .
  *(.ccmram)
@@ -1342,44 +1403,44 @@ LOAD /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/crtn.o
                 0x0000000010000000                _eccmram = .
                 0x0000000010000000                . = ALIGN (0x4)
 
-.bss            0x0000000020000010       0xc8
-                0x0000000020000010                _sbss = .
-                0x0000000020000010                __bss_start__ = _sbss
+.bss            0x000000002000000c       0xd0
+                0x000000002000000c                _sbss = .
+                0x000000002000000c                __bss_start__ = _sbss
  *(.bss)
- .bss           0x0000000020000010       0x1c /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/crtbegin.o
+ .bss           0x000000002000000c       0x1c /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/crtbegin.o
  *(.bss*)
- .bss.AdcHandle
-                0x000000002000002c       0x4c obj/main.o
- .bss.adcChannelFinished
-                0x0000000020000078        0x4 obj/main.o
-                0x0000000020000078                adcChannelFinished
- .bss.dacHandle
-                0x000000002000007c       0x14 obj/main.o
- .bss.EXTI3_Counter
-                0x0000000020000090        0x1 obj/main.o
-                0x0000000020000090                EXTI3_Counter
- *fill*         0x0000000020000091        0x3 
+ .bss.CurrentADCChannel
+                0x0000000020000028        0x4 obj/adc.o
+                0x0000000020000028                CurrentADCChannel
  .bss.distortion
-                0x0000000020000094        0x4 obj/main.o
-                0x0000000020000094                distortion
- .bss.tim2handle
-                0x0000000020000098       0x3c obj/main.o
- .bss.uwTick    0x00000000200000d4        0x4 obj/stm32f3xx_hal.o
+                0x000000002000002c        0x4 obj/adc.o
+                0x000000002000002c                distortion
+ .bss.distortionEnabled
+                0x0000000020000030        0x4 obj/button.o
+                0x0000000020000030                distortionEnabled
+ .bss.uwTick    0x0000000020000034        0x4 obj/stm32f3xx_hal.o
  *(COMMON)
-                0x00000000200000d8                . = ALIGN (0x4)
-                0x00000000200000d8                _ebss = .
-                0x00000000200000d8                __bss_end__ = _ebss
+ COMMON         0x0000000020000038       0x4c obj/adc.o
+                0x0000000020000038                AdcHandle
+ COMMON         0x0000000020000084       0x1c obj/dac.o
+                0x0000000020000084                dacChannel
+                0x000000002000008c                dacHandle
+ COMMON         0x00000000200000a0       0x3c obj/timer.o
+                0x00000000200000a0                tim2handle
+                0x00000000200000dc                . = ALIGN (0x4)
+                0x00000000200000dc                _ebss = .
+                0x00000000200000dc                __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x00000000200000d8       0x80
-                0x00000000200000d8                . = ALIGN (0x4)
-                0x00000000200000d8                PROVIDE (end, .)
-                0x00000000200000d8                PROVIDE (_end, .)
-                0x00000000200000d8                PROVIDE (__end__, .)
-                0x00000000200000d8                . = (. + _Min_Heap_Size)
-                0x0000000020000158                . = (. + _Min_Stack_Size)
- *fill*         0x00000000200000d8       0x80 
-                0x0000000020000158                . = ALIGN (0x4)
+                0x00000000200000dc       0x80
+                0x00000000200000dc                . = ALIGN (0x4)
+                0x00000000200000dc                PROVIDE (end, .)
+                0x00000000200000dc                PROVIDE (_end, .)
+                0x00000000200000dc                PROVIDE (__end__, .)
+                0x00000000200000dc                . = (. + _Min_Heap_Size)
+                0x000000002000015c                . = (. + _Min_Stack_Size)
+ *fill*         0x00000000200000dc       0x80 
+                0x000000002000015c                . = ALIGN (0x4)
 
 .memory_b1_text
  *(.mb1text)
@@ -1406,39 +1467,55 @@ LOAD /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/crtn.o
  .ARM.attributes
                 0x00000000000000d2       0x39 obj/led.o
  .ARM.attributes
-                0x000000000000010b       0x39 obj/system_stm32f3xx.o
+                0x000000000000010b       0x39 obj/adc.o
  .ARM.attributes
-                0x0000000000000144       0x21 obj/startup_stm32f334x8.o
+                0x0000000000000144       0x39 obj/dac.o
  .ARM.attributes
-                0x0000000000000165       0x39 obj/stm32f3xx_it.o
+                0x000000000000017d       0x39 obj/button.o
  .ARM.attributes
-                0x000000000000019e       0x39 obj/stm32f3xx_hal_rcc.o
+                0x00000000000001b6       0x39 obj/timer.o
  .ARM.attributes
-                0x00000000000001d7       0x39 obj/stm32f3xx_hal_rcc_ex.o
+                0x00000000000001ef       0x39 obj/system_stm32f3xx.o
  .ARM.attributes
-                0x0000000000000210       0x39 obj/stm32f3xx_hal_gpio.o
+                0x0000000000000228       0x21 obj/startup_stm32f334x8.o
  .ARM.attributes
-                0x0000000000000249       0x39 obj/stm32f3xx_hal_cortex.o
+                0x0000000000000249       0x39 obj/stm32f3xx_it.o
  .ARM.attributes
-                0x0000000000000282       0x39 obj/stm32f3xx_hal_adc.o
+                0x0000000000000282       0x39 obj/stm32f3xx_hal_rcc.o
  .ARM.attributes
-                0x00000000000002bb       0x39 obj/stm32f3xx_hal_adc_ex.o
+                0x00000000000002bb       0x39 obj/stm32f3xx_hal_rcc_ex.o
  .ARM.attributes
-                0x00000000000002f4       0x39 obj/stm32f3xx_hal_dac_ex.o
+                0x00000000000002f4       0x39 obj/stm32f3xx_hal_gpio.o
  .ARM.attributes
-                0x000000000000032d       0x39 obj/stm32f3xx_hal_tim.o
+                0x000000000000032d       0x39 obj/stm32f3xx_hal_cortex.o
  .ARM.attributes
-                0x0000000000000366       0x39 obj/stm32f3xx_hal_tim_ex.o
+                0x0000000000000366       0x39 obj/stm32f3xx_hal_adc.o
  .ARM.attributes
-                0x000000000000039f       0x39 obj/stm32f3xx_hal.o
+                0x000000000000039f       0x39 obj/stm32f3xx_hal_adc_ex.o
  .ARM.attributes
-                0x00000000000003d8       0x39 obj/stm32f3xx_nucleo.o
+                0x00000000000003d8       0x39 obj/stm32f3xx_hal_dac.o
  .ARM.attributes
-                0x0000000000000411       0x39 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/libc.a(lib_a-init.o)
+                0x0000000000000411       0x39 obj/stm32f3xx_hal_dac_ex.o
  .ARM.attributes
-                0x000000000000044a       0x39 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/crtend.o
+                0x000000000000044a       0x39 obj/stm32f3xx_hal_tim.o
  .ARM.attributes
-                0x0000000000000483       0x27 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/crtn.o
+                0x0000000000000483       0x39 obj/stm32f3xx_hal_tim_ex.o
+ .ARM.attributes
+                0x00000000000004bc       0x39 obj/stm32f3xx_hal.o
+ .ARM.attributes
+                0x00000000000004f5       0x39 obj/stm32f3xx_nucleo.o
+ .ARM.attributes
+                0x000000000000052e       0x27 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_arm_addsubdf3.o)
+ .ARM.attributes
+                0x0000000000000555       0x27 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_arm_muldivdf3.o)
+ .ARM.attributes
+                0x000000000000057c       0x27 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_arm_fixdfsi.o)
+ .ARM.attributes
+                0x00000000000005a3       0x39 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/libc.a(lib_a-init.o)
+ .ARM.attributes
+                0x00000000000005dc       0x39 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/crtend.o
+ .ARM.attributes
+                0x0000000000000615       0x27 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/crtn.o
 OUTPUT(obj/main.elf elf32-littlearm)
 
 .comment        0x0000000000000000       0x11
@@ -1447,6 +1524,10 @@ OUTPUT(obj/main.elf elf32-littlearm)
  .comment       0x0000000000000011       0x12 obj/main.o
  .comment       0x0000000000000011       0x12 obj/misc.o
  .comment       0x0000000000000011       0x12 obj/led.o
+ .comment       0x0000000000000011       0x12 obj/adc.o
+ .comment       0x0000000000000011       0x12 obj/dac.o
+ .comment       0x0000000000000011       0x12 obj/button.o
+ .comment       0x0000000000000011       0x12 obj/timer.o
  .comment       0x0000000000000011       0x12 obj/system_stm32f3xx.o
  .comment       0x0000000000000011       0x12 obj/stm32f3xx_it.o
  .comment       0x0000000000000011       0x12 obj/stm32f3xx_hal_rcc.o
@@ -1455,6 +1536,7 @@ OUTPUT(obj/main.elf elf32-littlearm)
  .comment       0x0000000000000011       0x12 obj/stm32f3xx_hal_cortex.o
  .comment       0x0000000000000011       0x12 obj/stm32f3xx_hal_adc.o
  .comment       0x0000000000000011       0x12 obj/stm32f3xx_hal_adc_ex.o
+ .comment       0x0000000000000011       0x12 obj/stm32f3xx_hal_dac.o
  .comment       0x0000000000000011       0x12 obj/stm32f3xx_hal_dac_ex.o
  .comment       0x0000000000000011       0x12 obj/stm32f3xx_hal_tim.o
  .comment       0x0000000000000011       0x12 obj/stm32f3xx_hal_tim_ex.o
@@ -1463,191 +1545,256 @@ OUTPUT(obj/main.elf elf32-littlearm)
  .comment       0x0000000000000011       0x12 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/libc.a(lib_a-init.o)
  .comment       0x0000000000000011       0x12 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/crtend.o
 
-.debug_info     0x0000000000000000     0xe862
- .debug_info    0x0000000000000000     0x17a3 obj/main.o
- .debug_info    0x00000000000017a3      0x168 obj/misc.o
- .debug_info    0x000000000000190b      0x2e6 obj/led.o
- .debug_info    0x0000000000001bf1      0x58e obj/system_stm32f3xx.o
- .debug_info    0x000000000000217f       0x61 obj/startup_stm32f334x8.o
- .debug_info    0x00000000000021e0      0x13e obj/stm32f3xx_it.o
- .debug_info    0x000000000000231e      0xec4 obj/stm32f3xx_hal_rcc.o
- .debug_info    0x00000000000031e2     0x1976 obj/stm32f3xx_hal_rcc_ex.o
- .debug_info    0x0000000000004b58      0x704 obj/stm32f3xx_hal_gpio.o
- .debug_info    0x000000000000525c      0xbe1 obj/stm32f3xx_hal_cortex.o
- .debug_info    0x0000000000005e3d      0xabb obj/stm32f3xx_hal_adc.o
- .debug_info    0x00000000000068f8     0x17bd obj/stm32f3xx_hal_adc_ex.o
- .debug_info    0x00000000000080b5      0x96e obj/stm32f3xx_hal_dac_ex.o
- .debug_info    0x0000000000008a23     0x31e2 obj/stm32f3xx_hal_tim.o
- .debug_info    0x000000000000bc05     0x159a obj/stm32f3xx_hal_tim_ex.o
- .debug_info    0x000000000000d19f      0x69e obj/stm32f3xx_hal.o
- .debug_info    0x000000000000d83d     0x1025 obj/stm32f3xx_nucleo.o
+.debug_info     0x0000000000000000    0x10180
+ .debug_info    0x0000000000000000      0x221 obj/main.o
+ .debug_info    0x0000000000000221      0x171 obj/misc.o
+ .debug_info    0x0000000000000392      0x44e obj/led.o
+ .debug_info    0x00000000000007e0      0xcb4 obj/adc.o
+ .debug_info    0x0000000000001494      0x844 obj/dac.o
+ .debug_info    0x0000000000001cd8      0x5d0 obj/button.o
+ .debug_info    0x00000000000022a8      0x85a obj/timer.o
+ .debug_info    0x0000000000002b02      0x58e obj/system_stm32f3xx.o
+ .debug_info    0x0000000000003090       0x61 obj/startup_stm32f334x8.o
+ .debug_info    0x00000000000030f1      0x13e obj/stm32f3xx_it.o
+ .debug_info    0x000000000000322f      0xec4 obj/stm32f3xx_hal_rcc.o
+ .debug_info    0x00000000000040f3     0x1976 obj/stm32f3xx_hal_rcc_ex.o
+ .debug_info    0x0000000000005a69      0x704 obj/stm32f3xx_hal_gpio.o
+ .debug_info    0x000000000000616d      0xbe1 obj/stm32f3xx_hal_cortex.o
+ .debug_info    0x0000000000006d4e      0xabb obj/stm32f3xx_hal_adc.o
+ .debug_info    0x0000000000007809     0x17bd obj/stm32f3xx_hal_adc_ex.o
+ .debug_info    0x0000000000008fc6      0x812 obj/stm32f3xx_hal_dac.o
+ .debug_info    0x00000000000097d8      0x96e obj/stm32f3xx_hal_dac_ex.o
+ .debug_info    0x000000000000a146     0x31e2 obj/stm32f3xx_hal_tim.o
+ .debug_info    0x000000000000d328     0x159a obj/stm32f3xx_hal_tim_ex.o
+ .debug_info    0x000000000000e8c2      0x69e obj/stm32f3xx_hal.o
+ .debug_info    0x000000000000ef60     0x1025 obj/stm32f3xx_nucleo.o
+ .debug_info    0x000000000000ff85       0xa9 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_arm_addsubdf3.o)
+ .debug_info    0x000000000001002e       0xa9 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_arm_muldivdf3.o)
+ .debug_info    0x00000000000100d7       0xa9 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_arm_fixdfsi.o)
 
-.debug_abbrev   0x0000000000000000     0x2195
- .debug_abbrev  0x0000000000000000      0x2f1 obj/main.o
- .debug_abbrev  0x00000000000002f1       0xd5 obj/misc.o
- .debug_abbrev  0x00000000000003c6      0x115 obj/led.o
- .debug_abbrev  0x00000000000004db      0x1c5 obj/system_stm32f3xx.o
- .debug_abbrev  0x00000000000006a0       0x12 obj/startup_stm32f334x8.o
- .debug_abbrev  0x00000000000006b2       0xa0 obj/stm32f3xx_it.o
- .debug_abbrev  0x0000000000000752      0x2d0 obj/stm32f3xx_hal_rcc.o
- .debug_abbrev  0x0000000000000a22      0x278 obj/stm32f3xx_hal_rcc_ex.o
- .debug_abbrev  0x0000000000000c9a      0x1bd obj/stm32f3xx_hal_gpio.o
- .debug_abbrev  0x0000000000000e57      0x2c7 obj/stm32f3xx_hal_cortex.o
- .debug_abbrev  0x000000000000111e      0x15b obj/stm32f3xx_hal_adc.o
- .debug_abbrev  0x0000000000001279      0x2c7 obj/stm32f3xx_hal_adc_ex.o
- .debug_abbrev  0x0000000000001540      0x241 obj/stm32f3xx_hal_dac_ex.o
- .debug_abbrev  0x0000000000001781      0x32d obj/stm32f3xx_hal_tim.o
- .debug_abbrev  0x0000000000001aae      0x254 obj/stm32f3xx_hal_tim_ex.o
- .debug_abbrev  0x0000000000001d02      0x1e0 obj/stm32f3xx_hal.o
- .debug_abbrev  0x0000000000001ee2      0x2b3 obj/stm32f3xx_nucleo.o
+.debug_abbrev   0x0000000000000000     0x29b1
+ .debug_abbrev  0x0000000000000000      0x108 obj/main.o
+ .debug_abbrev  0x0000000000000108       0xd5 obj/misc.o
+ .debug_abbrev  0x00000000000001dd      0x15a obj/led.o
+ .debug_abbrev  0x0000000000000337      0x24c obj/adc.o
+ .debug_abbrev  0x0000000000000583      0x202 obj/dac.o
+ .debug_abbrev  0x0000000000000785      0x1d4 obj/button.o
+ .debug_abbrev  0x0000000000000959      0x1b9 obj/timer.o
+ .debug_abbrev  0x0000000000000b12      0x1c5 obj/system_stm32f3xx.o
+ .debug_abbrev  0x0000000000000cd7       0x12 obj/startup_stm32f334x8.o
+ .debug_abbrev  0x0000000000000ce9       0xa0 obj/stm32f3xx_it.o
+ .debug_abbrev  0x0000000000000d89      0x2d0 obj/stm32f3xx_hal_rcc.o
+ .debug_abbrev  0x0000000000001059      0x278 obj/stm32f3xx_hal_rcc_ex.o
+ .debug_abbrev  0x00000000000012d1      0x1bd obj/stm32f3xx_hal_gpio.o
+ .debug_abbrev  0x000000000000148e      0x2c7 obj/stm32f3xx_hal_cortex.o
+ .debug_abbrev  0x0000000000001755      0x15b obj/stm32f3xx_hal_adc.o
+ .debug_abbrev  0x00000000000018b0      0x2c7 obj/stm32f3xx_hal_adc_ex.o
+ .debug_abbrev  0x0000000000001b77      0x1a9 obj/stm32f3xx_hal_dac.o
+ .debug_abbrev  0x0000000000001d20      0x241 obj/stm32f3xx_hal_dac_ex.o
+ .debug_abbrev  0x0000000000001f61      0x32d obj/stm32f3xx_hal_tim.o
+ .debug_abbrev  0x000000000000228e      0x254 obj/stm32f3xx_hal_tim_ex.o
+ .debug_abbrev  0x00000000000024e2      0x1e0 obj/stm32f3xx_hal.o
+ .debug_abbrev  0x00000000000026c2      0x2b3 obj/stm32f3xx_nucleo.o
+ .debug_abbrev  0x0000000000002975       0x14 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_arm_addsubdf3.o)
+ .debug_abbrev  0x0000000000002989       0x14 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_arm_muldivdf3.o)
+ .debug_abbrev  0x000000000000299d       0x14 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_arm_fixdfsi.o)
 
-.debug_loc      0x0000000000000000     0x7ca2
- .debug_loc     0x0000000000000000       0x98 obj/main.o
- .debug_loc     0x0000000000000098       0xad obj/system_stm32f3xx.o
- .debug_loc     0x0000000000000145      0x58b obj/stm32f3xx_hal_rcc.o
- .debug_loc     0x00000000000006d0      0xe7a obj/stm32f3xx_hal_rcc_ex.o
- .debug_loc     0x000000000000154a      0x32c obj/stm32f3xx_hal_gpio.o
- .debug_loc     0x0000000000001876      0x31e obj/stm32f3xx_hal_cortex.o
- .debug_loc     0x0000000000001b94      0x1ef obj/stm32f3xx_hal_adc.o
- .debug_loc     0x0000000000001d83     0x156a obj/stm32f3xx_hal_adc_ex.o
- .debug_loc     0x00000000000032ed      0x5a2 obj/stm32f3xx_hal_dac_ex.o
- .debug_loc     0x000000000000388f     0x31f0 obj/stm32f3xx_hal_tim.o
- .debug_loc     0x0000000000006a7f     0x1042 obj/stm32f3xx_hal_tim_ex.o
- .debug_loc     0x0000000000007ac1       0x3d obj/stm32f3xx_hal.o
- .debug_loc     0x0000000000007afe      0x1a4 obj/stm32f3xx_nucleo.o
+.debug_aranges  0x0000000000000000      0xd50
+ .debug_aranges
+                0x0000000000000000       0x20 obj/main.o
+ .debug_aranges
+                0x0000000000000020       0x20 obj/misc.o
+ .debug_aranges
+                0x0000000000000040       0x50 obj/led.o
+ .debug_aranges
+                0x0000000000000090       0x30 obj/adc.o
+ .debug_aranges
+                0x00000000000000c0       0x40 obj/dac.o
+ .debug_aranges
+                0x0000000000000100       0x50 obj/button.o
+ .debug_aranges
+                0x0000000000000150       0x38 obj/timer.o
+ .debug_aranges
+                0x0000000000000188       0x30 obj/system_stm32f3xx.o
+ .debug_aranges
+                0x00000000000001b8       0x28 obj/startup_stm32f334x8.o
+ .debug_aranges
+                0x00000000000001e0       0x60 obj/stm32f3xx_it.o
+ .debug_aranges
+                0x0000000000000240       0x88 obj/stm32f3xx_hal_rcc.o
+ .debug_aranges
+                0x00000000000002c8       0x40 obj/stm32f3xx_hal_rcc_ex.o
+ .debug_aranges
+                0x0000000000000308       0x58 obj/stm32f3xx_hal_gpio.o
+ .debug_aranges
+                0x0000000000000360       0x90 obj/stm32f3xx_hal_cortex.o
+ .debug_aranges
+                0x00000000000003f0       0xc8 obj/stm32f3xx_hal_adc.o
+ .debug_aranges
+                0x00000000000004b8      0x138 obj/stm32f3xx_hal_adc_ex.o
+ .debug_aranges
+                0x00000000000005f0       0xa8 obj/stm32f3xx_hal_dac.o
+ .debug_aranges
+                0x0000000000000698       0xb0 obj/stm32f3xx_hal_dac_ex.o
+ .debug_aranges
+                0x0000000000000748      0x328 obj/stm32f3xx_hal_tim.o
+ .debug_aranges
+                0x0000000000000a70      0x170 obj/stm32f3xx_hal_tim_ex.o
+ .debug_aranges
+                0x0000000000000be0       0xb0 obj/stm32f3xx_hal.o
+ .debug_aranges
+                0x0000000000000c90       0x60 obj/stm32f3xx_nucleo.o
+ .debug_aranges
+                0x0000000000000cf0       0x20 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_arm_addsubdf3.o)
+ .debug_aranges
+                0x0000000000000d10       0x20 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_arm_muldivdf3.o)
+ .debug_aranges
+                0x0000000000000d30       0x20 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_arm_fixdfsi.o)
 
-.debug_aranges  0x0000000000000000      0xbc8
- .debug_aranges
-                0x0000000000000000       0xa0 obj/main.o
- .debug_aranges
-                0x00000000000000a0       0x20 obj/misc.o
- .debug_aranges
-                0x00000000000000c0       0x48 obj/led.o
- .debug_aranges
-                0x0000000000000108       0x30 obj/system_stm32f3xx.o
- .debug_aranges
-                0x0000000000000138       0x28 obj/startup_stm32f334x8.o
- .debug_aranges
-                0x0000000000000160       0x60 obj/stm32f3xx_it.o
- .debug_aranges
-                0x00000000000001c0       0x88 obj/stm32f3xx_hal_rcc.o
- .debug_aranges
-                0x0000000000000248       0x40 obj/stm32f3xx_hal_rcc_ex.o
- .debug_aranges
-                0x0000000000000288       0x58 obj/stm32f3xx_hal_gpio.o
- .debug_aranges
-                0x00000000000002e0       0x90 obj/stm32f3xx_hal_cortex.o
- .debug_aranges
-                0x0000000000000370       0xc8 obj/stm32f3xx_hal_adc.o
- .debug_aranges
-                0x0000000000000438      0x138 obj/stm32f3xx_hal_adc_ex.o
- .debug_aranges
-                0x0000000000000570       0xb0 obj/stm32f3xx_hal_dac_ex.o
- .debug_aranges
-                0x0000000000000620      0x328 obj/stm32f3xx_hal_tim.o
- .debug_aranges
-                0x0000000000000948      0x170 obj/stm32f3xx_hal_tim_ex.o
- .debug_aranges
-                0x0000000000000ab8       0xb0 obj/stm32f3xx_hal.o
- .debug_aranges
-                0x0000000000000b68       0x60 obj/stm32f3xx_nucleo.o
+.debug_ranges   0x0000000000000000      0xea0
+ .debug_ranges  0x0000000000000000       0x10 obj/main.o
+ .debug_ranges  0x0000000000000010       0x10 obj/misc.o
+ .debug_ranges  0x0000000000000020       0x40 obj/led.o
+ .debug_ranges  0x0000000000000060       0x20 obj/adc.o
+ .debug_ranges  0x0000000000000080       0x30 obj/dac.o
+ .debug_ranges  0x00000000000000b0       0x40 obj/button.o
+ .debug_ranges  0x00000000000000f0       0x28 obj/timer.o
+ .debug_ranges  0x0000000000000118       0x20 obj/system_stm32f3xx.o
+ .debug_ranges  0x0000000000000138       0x20 obj/startup_stm32f334x8.o
+ .debug_ranges  0x0000000000000158       0x50 obj/stm32f3xx_it.o
+ .debug_ranges  0x00000000000001a8       0x78 obj/stm32f3xx_hal_rcc.o
+ .debug_ranges  0x0000000000000220      0x180 obj/stm32f3xx_hal_rcc_ex.o
+ .debug_ranges  0x00000000000003a0       0x48 obj/stm32f3xx_hal_gpio.o
+ .debug_ranges  0x00000000000003e8      0x118 obj/stm32f3xx_hal_cortex.o
+ .debug_ranges  0x0000000000000500       0xb8 obj/stm32f3xx_hal_adc.o
+ .debug_ranges  0x00000000000005b8      0x128 obj/stm32f3xx_hal_adc_ex.o
+ .debug_ranges  0x00000000000006e0       0x98 obj/stm32f3xx_hal_dac.o
+ .debug_ranges  0x0000000000000778       0xa0 obj/stm32f3xx_hal_dac_ex.o
+ .debug_ranges  0x0000000000000818      0x408 obj/stm32f3xx_hal_tim.o
+ .debug_ranges  0x0000000000000c20      0x160 obj/stm32f3xx_hal_tim_ex.o
+ .debug_ranges  0x0000000000000d80       0xa0 obj/stm32f3xx_hal.o
+ .debug_ranges  0x0000000000000e20       0x80 obj/stm32f3xx_nucleo.o
 
-.debug_ranges   0x0000000000000000      0xdc8
- .debug_ranges  0x0000000000000000       0x90 obj/main.o
- .debug_ranges  0x0000000000000090       0x10 obj/misc.o
- .debug_ranges  0x00000000000000a0       0x38 obj/led.o
- .debug_ranges  0x00000000000000d8       0x20 obj/system_stm32f3xx.o
- .debug_ranges  0x00000000000000f8       0x20 obj/startup_stm32f334x8.o
- .debug_ranges  0x0000000000000118       0x50 obj/stm32f3xx_it.o
- .debug_ranges  0x0000000000000168       0x78 obj/stm32f3xx_hal_rcc.o
- .debug_ranges  0x00000000000001e0      0x180 obj/stm32f3xx_hal_rcc_ex.o
- .debug_ranges  0x0000000000000360       0x48 obj/stm32f3xx_hal_gpio.o
- .debug_ranges  0x00000000000003a8      0x118 obj/stm32f3xx_hal_cortex.o
- .debug_ranges  0x00000000000004c0       0xb8 obj/stm32f3xx_hal_adc.o
- .debug_ranges  0x0000000000000578      0x128 obj/stm32f3xx_hal_adc_ex.o
- .debug_ranges  0x00000000000006a0       0xa0 obj/stm32f3xx_hal_dac_ex.o
- .debug_ranges  0x0000000000000740      0x408 obj/stm32f3xx_hal_tim.o
- .debug_ranges  0x0000000000000b48      0x160 obj/stm32f3xx_hal_tim_ex.o
- .debug_ranges  0x0000000000000ca8       0xa0 obj/stm32f3xx_hal.o
- .debug_ranges  0x0000000000000d48       0x80 obj/stm32f3xx_nucleo.o
+.debug_line     0x0000000000000000     0x683a
+ .debug_line    0x0000000000000000      0x1f0 obj/main.o
+ .debug_line    0x00000000000001f0      0x173 obj/misc.o
+ .debug_line    0x0000000000000363      0x209 obj/led.o
+ .debug_line    0x000000000000056c      0x2d6 obj/adc.o
+ .debug_line    0x0000000000000842      0x253 obj/dac.o
+ .debug_line    0x0000000000000a95      0x243 obj/button.o
+ .debug_line    0x0000000000000cd8      0x229 obj/timer.o
+ .debug_line    0x0000000000000f01      0x24a obj/system_stm32f3xx.o
+ .debug_line    0x000000000000114b       0x78 obj/startup_stm32f334x8.o
+ .debug_line    0x00000000000011c3      0x1d0 obj/stm32f3xx_it.o
+ .debug_line    0x0000000000001393      0x55e obj/stm32f3xx_hal_rcc.o
+ .debug_line    0x00000000000018f1      0x819 obj/stm32f3xx_hal_rcc_ex.o
+ .debug_line    0x000000000000210a      0x39c obj/stm32f3xx_hal_gpio.o
+ .debug_line    0x00000000000024a6      0x355 obj/stm32f3xx_hal_cortex.o
+ .debug_line    0x00000000000027fb      0x3a0 obj/stm32f3xx_hal_adc.o
+ .debug_line    0x0000000000002b9b      0xcac obj/stm32f3xx_hal_adc_ex.o
+ .debug_line    0x0000000000003847      0x3b2 obj/stm32f3xx_hal_dac.o
+ .debug_line    0x0000000000003bf9      0x48e obj/stm32f3xx_hal_dac_ex.o
+ .debug_line    0x0000000000004087     0x1364 obj/stm32f3xx_hal_tim.o
+ .debug_line    0x00000000000053eb      0x9d0 obj/stm32f3xx_hal_tim_ex.o
+ .debug_line    0x0000000000005dbb      0x371 obj/stm32f3xx_hal.o
+ .debug_line    0x000000000000612c      0x39c obj/stm32f3xx_nucleo.o
+ .debug_line    0x00000000000064c8      0x16f /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_arm_addsubdf3.o)
+ .debug_line    0x0000000000006637      0x193 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_arm_muldivdf3.o)
+ .debug_line    0x00000000000067ca       0x70 /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_arm_fixdfsi.o)
 
-.debug_line     0x0000000000000000     0x5a28
- .debug_line    0x0000000000000000      0x4b8 obj/main.o
- .debug_line    0x00000000000004b8      0x16e obj/misc.o
- .debug_line    0x0000000000000626      0x1ed obj/led.o
- .debug_line    0x0000000000000813      0x24a obj/system_stm32f3xx.o
- .debug_line    0x0000000000000a5d       0x78 obj/startup_stm32f334x8.o
- .debug_line    0x0000000000000ad5      0x1d0 obj/stm32f3xx_it.o
- .debug_line    0x0000000000000ca5      0x55e obj/stm32f3xx_hal_rcc.o
- .debug_line    0x0000000000001203      0x819 obj/stm32f3xx_hal_rcc_ex.o
- .debug_line    0x0000000000001a1c      0x39c obj/stm32f3xx_hal_gpio.o
- .debug_line    0x0000000000001db8      0x355 obj/stm32f3xx_hal_cortex.o
- .debug_line    0x000000000000210d      0x3a0 obj/stm32f3xx_hal_adc.o
- .debug_line    0x00000000000024ad      0xcac obj/stm32f3xx_hal_adc_ex.o
- .debug_line    0x0000000000003159      0x48e obj/stm32f3xx_hal_dac_ex.o
- .debug_line    0x00000000000035e7     0x1364 obj/stm32f3xx_hal_tim.o
- .debug_line    0x000000000000494b      0x9d0 obj/stm32f3xx_hal_tim_ex.o
- .debug_line    0x000000000000531b      0x371 obj/stm32f3xx_hal.o
- .debug_line    0x000000000000568c      0x39c obj/stm32f3xx_nucleo.o
-
-.debug_str      0x0000000000000000     0x3c2d
- .debug_str     0x0000000000000000     0x114c obj/main.o
-                                       0x125e (size before relaxing)
- .debug_str     0x000000000000114c       0x37 obj/misc.o
+.debug_str      0x0000000000000000     0x3d30
+ .debug_str     0x0000000000000000      0x217 obj/main.o
+                                        0x26e (size before relaxing)
+ .debug_str     0x0000000000000217       0x4e obj/misc.o
                                         0x1a0 (size before relaxing)
- .debug_str     0x0000000000001183       0x35 obj/led.o
-                                        0x230 (size before relaxing)
- .debug_str     0x00000000000011b8      0x1fe obj/system_stm32f3xx.o
+ .debug_str     0x0000000000000265      0x13f obj/led.o
+                                        0x2cf (size before relaxing)
+ .debug_str     0x00000000000003a4      0x952 obj/adc.o
+                                        0xc7b (size before relaxing)
+ .debug_str     0x0000000000000cf6      0x1e4 obj/dac.o
+                                        0x643 (size before relaxing)
+ .debug_str     0x0000000000000eda       0xab obj/button.o
+                                        0x64e (size before relaxing)
+ .debug_str     0x0000000000000f85      0x26a obj/timer.o
+                                        0x991 (size before relaxing)
+ .debug_str     0x00000000000011ef      0x1fe obj/system_stm32f3xx.o
                                         0x42a (size before relaxing)
- .debug_str     0x00000000000013b6       0xaf obj/stm32f3xx_it.o
+ .debug_str     0x00000000000013ed       0xaf obj/stm32f3xx_it.o
                                         0x201 (size before relaxing)
- .debug_str     0x0000000000001465      0x1ed obj/stm32f3xx_hal_rcc.o
+ .debug_str     0x000000000000149c      0x1ed obj/stm32f3xx_hal_rcc.o
                                         0x5a5 (size before relaxing)
- .debug_str     0x0000000000001652      0x1d1 obj/stm32f3xx_hal_rcc_ex.o
+ .debug_str     0x0000000000001689      0x1d1 obj/stm32f3xx_hal_rcc_ex.o
                                         0x4c6 (size before relaxing)
- .debug_str     0x0000000000001823      0x140 obj/stm32f3xx_hal_gpio.o
+ .debug_str     0x000000000000185a      0x140 obj/stm32f3xx_hal_gpio.o
                                         0x481 (size before relaxing)
- .debug_str     0x0000000000001963      0x2af obj/stm32f3xx_hal_cortex.o
+ .debug_str     0x000000000000199a      0x2af obj/stm32f3xx_hal_cortex.o
                                         0x8f4 (size before relaxing)
- .debug_str     0x0000000000001c12      0x216 obj/stm32f3xx_hal_adc.o
+ .debug_str     0x0000000000001c49      0x216 obj/stm32f3xx_hal_adc.o
                                         0x98c (size before relaxing)
- .debug_str     0x0000000000001e28      0x5e4 obj/stm32f3xx_hal_adc_ex.o
+ .debug_str     0x0000000000001e5f      0x5e4 obj/stm32f3xx_hal_adc_ex.o
                                         0xf2d (size before relaxing)
- .debug_str     0x000000000000240c      0x295 obj/stm32f3xx_hal_dac_ex.o
+ .debug_str     0x0000000000002443      0x197 obj/stm32f3xx_hal_dac.o
+                                        0x69f (size before relaxing)
+ .debug_str     0x00000000000025da      0x1bf obj/stm32f3xx_hal_dac_ex.o
                                         0x731 (size before relaxing)
- .debug_str     0x00000000000026a1      0xcc2 obj/stm32f3xx_hal_tim.o
+ .debug_str     0x0000000000002799      0xcc2 obj/stm32f3xx_hal_tim.o
                                        0x12c4 (size before relaxing)
- .debug_str     0x0000000000003363      0x5c6 obj/stm32f3xx_hal_tim_ex.o
+ .debug_str     0x000000000000345b      0x5c6 obj/stm32f3xx_hal_tim_ex.o
                                         0xd77 (size before relaxing)
- .debug_str     0x0000000000003929      0x195 obj/stm32f3xx_hal.o
+ .debug_str     0x0000000000003a21      0x195 obj/stm32f3xx_hal.o
                                         0x794 (size before relaxing)
- .debug_str     0x0000000000003abe      0x16f obj/stm32f3xx_nucleo.o
+ .debug_str     0x0000000000003bb6      0x17a obj/stm32f3xx_nucleo.o
                                         0xe5b (size before relaxing)
 
-.debug_frame    0x0000000000000000     0x1ca4
- .debug_frame   0x0000000000000000      0x19c obj/main.o
- .debug_frame   0x000000000000019c       0x28 obj/misc.o
- .debug_frame   0x00000000000001c4       0x70 obj/led.o
- .debug_frame   0x0000000000000234       0x58 obj/system_stm32f3xx.o
- .debug_frame   0x000000000000028c       0xa0 obj/stm32f3xx_it.o
- .debug_frame   0x000000000000032c      0x134 obj/stm32f3xx_hal_rcc.o
- .debug_frame   0x0000000000000460       0x90 obj/stm32f3xx_hal_rcc_ex.o
- .debug_frame   0x00000000000004f0       0xd0 obj/stm32f3xx_hal_gpio.o
- .debug_frame   0x00000000000005c0      0x124 obj/stm32f3xx_hal_cortex.o
- .debug_frame   0x00000000000006e4      0x170 obj/stm32f3xx_hal_adc.o
- .debug_frame   0x0000000000000854      0x3cc obj/stm32f3xx_hal_adc_ex.o
- .debug_frame   0x0000000000000c20      0x1ac obj/stm32f3xx_hal_dac_ex.o
- .debug_frame   0x0000000000000dcc      0x878 obj/stm32f3xx_hal_tim.o
- .debug_frame   0x0000000000001644      0x418 obj/stm32f3xx_hal_tim_ex.o
- .debug_frame   0x0000000000001a5c      0x164 obj/stm32f3xx_hal.o
- .debug_frame   0x0000000000001bc0       0xe4 obj/stm32f3xx_nucleo.o
+.debug_frame    0x0000000000000000     0x1e94
+ .debug_frame   0x0000000000000000       0x28 obj/main.o
+ .debug_frame   0x0000000000000028       0x28 obj/misc.o
+ .debug_frame   0x0000000000000050       0x88 obj/led.o
+ .debug_frame   0x00000000000000d8       0x74 obj/adc.o
+ .debug_frame   0x000000000000014c       0x78 obj/dac.o
+ .debug_frame   0x00000000000001c4       0xa0 obj/button.o
+ .debug_frame   0x0000000000000264       0x64 obj/timer.o
+ .debug_frame   0x00000000000002c8       0x58 obj/system_stm32f3xx.o
+ .debug_frame   0x0000000000000320       0xa0 obj/stm32f3xx_it.o
+ .debug_frame   0x00000000000003c0      0x134 obj/stm32f3xx_hal_rcc.o
+ .debug_frame   0x00000000000004f4       0x90 obj/stm32f3xx_hal_rcc_ex.o
+ .debug_frame   0x0000000000000584       0xd0 obj/stm32f3xx_hal_gpio.o
+ .debug_frame   0x0000000000000654      0x124 obj/stm32f3xx_hal_cortex.o
+ .debug_frame   0x0000000000000778      0x170 obj/stm32f3xx_hal_adc.o
+ .debug_frame   0x00000000000008e8      0x3cc obj/stm32f3xx_hal_adc_ex.o
+ .debug_frame   0x0000000000000cb4      0x15c obj/stm32f3xx_hal_dac.o
+ .debug_frame   0x0000000000000e10      0x1ac obj/stm32f3xx_hal_dac_ex.o
+ .debug_frame   0x0000000000000fbc      0x878 obj/stm32f3xx_hal_tim.o
+ .debug_frame   0x0000000000001834      0x418 obj/stm32f3xx_hal_tim_ex.o
+ .debug_frame   0x0000000000001c4c      0x164 obj/stm32f3xx_hal.o
+ .debug_frame   0x0000000000001db0       0xe4 obj/stm32f3xx_nucleo.o
+
+.debug_loc      0x0000000000000000     0x7f73
+ .debug_loc     0x0000000000000000       0x3f obj/adc.o
+ .debug_loc     0x000000000000003f       0x63 obj/dac.o
+ .debug_loc     0x00000000000000a2       0xad obj/system_stm32f3xx.o
+ .debug_loc     0x000000000000014f      0x58b obj/stm32f3xx_hal_rcc.o
+ .debug_loc     0x00000000000006da      0xe7a obj/stm32f3xx_hal_rcc_ex.o
+ .debug_loc     0x0000000000001554      0x32c obj/stm32f3xx_hal_gpio.o
+ .debug_loc     0x0000000000001880      0x31e obj/stm32f3xx_hal_cortex.o
+ .debug_loc     0x0000000000001b9e      0x1ef obj/stm32f3xx_hal_adc.o
+ .debug_loc     0x0000000000001d8d     0x156a obj/stm32f3xx_hal_adc_ex.o
+ .debug_loc     0x00000000000032f7      0x2c7 obj/stm32f3xx_hal_dac.o
+ .debug_loc     0x00000000000035be      0x5a2 obj/stm32f3xx_hal_dac_ex.o
+ .debug_loc     0x0000000000003b60     0x31f0 obj/stm32f3xx_hal_tim.o
+ .debug_loc     0x0000000000006d50     0x1042 obj/stm32f3xx_hal_tim_ex.o
+ .debug_loc     0x0000000000007d92       0x3d obj/stm32f3xx_hal.o
+ .debug_loc     0x0000000000007dcf      0x1a4 obj/stm32f3xx_nucleo.o
 
 Cross Reference Table
 
 Symbol                                            File
-ADC1_2_IRQHandler                                 obj/main.o
+ADC1_2_IRQHandler                                 obj/adc.o
+ADC_Init                                          obj/adc.o
+                                                  obj/main.o
 AHBPrescTable                                     obj/system_stm32f3xx.o
 APBAHBPrescTable                                  obj/stm32f3xx_hal_rcc.o
+AdcHandle                                         obj/adc.o
 BSP_GetVersion                                    obj/stm32f3xx_nucleo.o
 BSP_JOY_GetState                                  obj/stm32f3xx_nucleo.o
 BSP_JOY_Init                                      obj/stm32f3xx_nucleo.o
@@ -1656,7 +1803,6 @@ BSP_LED_Init                                      obj/stm32f3xx_nucleo.o
 BSP_LED_Off                                       obj/stm32f3xx_nucleo.o
                                                   obj/main.o
 BSP_LED_On                                        obj/stm32f3xx_nucleo.o
-                                                  obj/main.o
 BSP_LED_Toggle                                    obj/stm32f3xx_nucleo.o
 BSP_PB_GetState                                   obj/stm32f3xx_nucleo.o
 BSP_PB_Init                                       obj/stm32f3xx_nucleo.o
@@ -1666,15 +1812,23 @@ BUTTON_PIN                                        obj/stm32f3xx_nucleo.o
 BUTTON_PORT                                       obj/stm32f3xx_nucleo.o
 BusFault_Handler                                  obj/stm32f3xx_it.o
                                                   obj/startup_stm32f334x8.o
+Button1_Init                                      obj/button.o
+                                                  obj/main.o
+Button1_Pressed                                   obj/button.o
+Button2_Init                                      obj/button.o
+Button2_Pressed                                   obj/button.o
 CAN_RX0_IRQHandler                                obj/startup_stm32f334x8.o
 CAN_RX1_IRQHandler                                obj/startup_stm32f334x8.o
 CAN_SCE_IRQHandler                                obj/startup_stm32f334x8.o
 CAN_TX_IRQHandler                                 obj/startup_stm32f334x8.o
 COMP2_IRQHandler                                  obj/startup_stm32f334x8.o
 COMP4_6_IRQHandler                                obj/startup_stm32f334x8.o
-DAC_SetValue12                                    obj/main.o
-DAC_SetValue8                                     obj/main.o
-DAC_Start                                         obj/main.o
+CurrentADCChannel                                 obj/adc.o
+DAC_Init                                          obj/dac.o
+                                                  obj/main.o
+DAC_SetValue12                                    obj/dac.o
+                                                  obj/adc.o
+DAC_SetValue8                                     obj/dac.o
 DMA1_Channel1_IRQHandler                          obj/startup_stm32f334x8.o
 DMA1_Channel2_IRQHandler                          obj/startup_stm32f334x8.o
 DMA1_Channel3_IRQHandler                          obj/startup_stm32f334x8.o
@@ -1686,16 +1840,16 @@ DebugMon_Handler                                  obj/stm32f3xx_it.o
                                                   obj/startup_stm32f334x8.o
 Default_Handler                                   obj/startup_stm32f334x8.o
 EXTI0_IRQHandler                                  obj/startup_stm32f334x8.o
-EXTI15_10_IRQHandler                              obj/main.o
-EXTI1_IRQHandler                                  obj/main.o
+EXTI15_10_IRQHandler                              obj/button.o
+EXTI1_IRQHandler                                  obj/button.o
 EXTI2_TSC_IRQHandler                              obj/startup_stm32f334x8.o
-EXTI3_Counter                                     obj/main.o
-EXTI3_IRQHandler                                  obj/main.o
+EXTI3_IRQHandler                                  obj/button.o
 EXTI4_IRQHandler                                  obj/startup_stm32f334x8.o
 EXTI9_5_IRQHandler                                obj/startup_stm32f334x8.o
 Error_Handler                                     obj/misc.o
                                                   obj/system_stm32f3xx.o
-                                                  obj/main.o
+                                                  obj/dac.o
+                                                  obj/adc.o
 FLASH_IRQHandler                                  obj/startup_stm32f334x8.o
 FLASH_PageErase                                   obj/stm32f3xx_hal_flash.o
 FLASH_WaitForLastOperation                        obj/stm32f3xx_hal_flash.o
@@ -1722,7 +1876,7 @@ HAL_ADC_AnalogWDGConfig                           obj/stm32f3xx_hal_adc_ex.o
 HAL_ADC_ConfigChannel                             obj/stm32f3xx_hal_adc_ex.o
                                                   obj/stm32f3xx_hal_adc.o
                                                   obj/stm32f3xx_nucleo.o
-                                                  obj/main.o
+                                                  obj/adc.o
 HAL_ADC_ConvCpltCallback                          obj/stm32f3xx_hal_adc.o
                                                   obj/stm32f3xx_hal_adc_ex.o
 HAL_ADC_ConvHalfCpltCallback                      obj/stm32f3xx_hal_adc.o
@@ -1737,19 +1891,19 @@ HAL_ADC_GetState                                  obj/stm32f3xx_hal_adc.o
 HAL_ADC_GetValue                                  obj/stm32f3xx_hal_adc_ex.o
                                                   obj/stm32f3xx_hal_adc.o
                                                   obj/stm32f3xx_nucleo.o
-                                                  obj/main.o
+                                                  obj/adc.o
 HAL_ADC_IRQHandler                                obj/stm32f3xx_hal_adc_ex.o
                                                   obj/stm32f3xx_hal_adc.o
-                                                  obj/main.o
+                                                  obj/adc.o
 HAL_ADC_Init                                      obj/stm32f3xx_hal_adc_ex.o
                                                   obj/stm32f3xx_hal_adc.o
                                                   obj/stm32f3xx_nucleo.o
-                                                  obj/main.o
+                                                  obj/adc.o
 HAL_ADC_LevelOutOfWindowCallback                  obj/stm32f3xx_hal_adc.o
                                                   obj/stm32f3xx_hal_adc_ex.o
 HAL_ADC_MspDeInit                                 obj/stm32f3xx_hal_adc.o
                                                   obj/stm32f3xx_hal_adc_ex.o
-HAL_ADC_MspInit                                   obj/main.o
+HAL_ADC_MspInit                                   obj/adc.o
                                                   obj/stm32f3xx_hal_adc_ex.o
 HAL_ADC_PollForConversion                         obj/stm32f3xx_hal_adc_ex.o
                                                   obj/stm32f3xx_hal_adc.o
@@ -1763,7 +1917,7 @@ HAL_ADC_Start_DMA                                 obj/stm32f3xx_hal_adc_ex.o
                                                   obj/stm32f3xx_hal_adc.o
 HAL_ADC_Start_IT                                  obj/stm32f3xx_hal_adc_ex.o
                                                   obj/stm32f3xx_hal_adc.o
-                                                  obj/main.o
+                                                  obj/adc.o
 HAL_ADC_Stop                                      obj/stm32f3xx_hal_adc_ex.o
                                                   obj/stm32f3xx_hal_adc.o
 HAL_ADC_Stop_DMA                                  obj/stm32f3xx_hal_adc_ex.o
@@ -1781,7 +1935,7 @@ HAL_DACEx_ErrorCallbackCh2                        obj/stm32f3xx_hal_dac_ex.o
 HAL_DACEx_NoiseWaveGenerate                       obj/stm32f3xx_hal_dac_ex.o
 HAL_DACEx_TriangleWaveGenerate                    obj/stm32f3xx_hal_dac_ex.o
 HAL_DAC_ConfigChannel                             obj/stm32f3xx_hal_dac.o
-                                                  obj/main.o
+                                                  obj/dac.o
 HAL_DAC_ConvCpltCallbackCh1                       obj/stm32f3xx_hal_dac.o
                                                   obj/stm32f3xx_hal_dac_ex.o
 HAL_DAC_ConvHalfCpltCallbackCh1                   obj/stm32f3xx_hal_dac.o
@@ -1797,15 +1951,15 @@ HAL_DAC_GetValue                                  obj/stm32f3xx_hal_dac_ex.o
                                                   obj/stm32f3xx_hal_dac.o
 HAL_DAC_IRQHandler                                obj/stm32f3xx_hal_dac_ex.o
 HAL_DAC_Init                                      obj/stm32f3xx_hal_dac.o
-                                                  obj/main.o
-HAL_DAC_MspDeInit                                 obj/main.o
-HAL_DAC_MspInit                                   obj/main.o
+                                                  obj/dac.o
+HAL_DAC_MspDeInit                                 obj/dac.o
+HAL_DAC_MspInit                                   obj/dac.o
 HAL_DAC_SetValue                                  obj/stm32f3xx_hal_dac_ex.o
                                                   obj/stm32f3xx_hal_dac.o
-                                                  obj/main.o
+                                                  obj/dac.o
 HAL_DAC_Start                                     obj/stm32f3xx_hal_dac_ex.o
                                                   obj/stm32f3xx_hal_dac.o
-                                                  obj/main.o
+                                                  obj/dac.o
 HAL_DAC_Start_DMA                                 obj/stm32f3xx_hal_dac_ex.o
 HAL_DAC_Stop                                      obj/stm32f3xx_hal_dac.o
 HAL_DAC_Stop_DMA                                  obj/stm32f3xx_hal_dac.o
@@ -1842,7 +1996,10 @@ HAL_GPIO_EXTI_IRQHandler                          obj/stm32f3xx_hal_gpio.o
 HAL_GPIO_Init                                     obj/stm32f3xx_hal_gpio.o
                                                   obj/stm32f3xx_nucleo.o
                                                   obj/stm32f3xx_hal_rcc.o
-                                                  obj/main.o
+                                                  obj/button.o
+                                                  obj/dac.o
+                                                  obj/adc.o
+                                                  obj/led.o
 HAL_GPIO_LockPin                                  obj/stm32f3xx_hal_gpio.o
 HAL_GPIO_ReadPin                                  obj/stm32f3xx_hal_gpio.o
                                                   obj/stm32f3xx_nucleo.o
@@ -1852,7 +2009,6 @@ HAL_GPIO_TogglePin                                obj/stm32f3xx_hal_gpio.o
 HAL_GPIO_WritePin                                 obj/stm32f3xx_hal_gpio.o
                                                   obj/stm32f3xx_nucleo.o
                                                   obj/led.o
-                                                  obj/main.o
 HAL_GetDEVID                                      obj/stm32f3xx_hal.o
 HAL_GetHalVersion                                 obj/stm32f3xx_hal.o
 HAL_GetREVID                                      obj/stm32f3xx_hal.o
@@ -1873,7 +2029,9 @@ HAL_NVIC_ClearPendingIRQ                          obj/stm32f3xx_hal_cortex.o
 HAL_NVIC_DisableIRQ                               obj/stm32f3xx_hal_cortex.o
 HAL_NVIC_EnableIRQ                                obj/stm32f3xx_hal_cortex.o
                                                   obj/stm32f3xx_nucleo.o
-                                                  obj/main.o
+                                                  obj/timer.o
+                                                  obj/button.o
+                                                  obj/adc.o
 HAL_NVIC_GetActive                                obj/stm32f3xx_hal_cortex.o
 HAL_NVIC_GetPendingIRQ                            obj/stm32f3xx_hal_cortex.o
 HAL_NVIC_GetPriority                              obj/stm32f3xx_hal_cortex.o
@@ -1882,7 +2040,8 @@ HAL_NVIC_SetPendingIRQ                            obj/stm32f3xx_hal_cortex.o
 HAL_NVIC_SetPriority                              obj/stm32f3xx_hal_cortex.o
                                                   obj/stm32f3xx_nucleo.o
                                                   obj/stm32f3xx_hal.o
-                                                  obj/main.o
+                                                  obj/button.o
+                                                  obj/adc.o
 HAL_NVIC_SetPriorityGrouping                      obj/stm32f3xx_hal_cortex.o
                                                   obj/stm32f3xx_hal.o
 HAL_NVIC_SystemReset                              obj/stm32f3xx_hal_cortex.o
@@ -1958,13 +2117,13 @@ HAL_TIMEx_RemapConfig                             obj/stm32f3xx_hal_tim_ex.o
 HAL_TIM_Base_DeInit                               obj/stm32f3xx_hal_tim.o
 HAL_TIM_Base_GetState                             obj/stm32f3xx_hal_tim.o
 HAL_TIM_Base_Init                                 obj/stm32f3xx_hal_tim.o
-                                                  obj/main.o
-HAL_TIM_Base_MspDeInit                            obj/main.o
-HAL_TIM_Base_MspInit                              obj/main.o
+                                                  obj/timer.o
+HAL_TIM_Base_MspDeInit                            obj/timer.o
+HAL_TIM_Base_MspInit                              obj/timer.o
 HAL_TIM_Base_Start                                obj/stm32f3xx_hal_tim.o
 HAL_TIM_Base_Start_DMA                            obj/stm32f3xx_hal_tim.o
 HAL_TIM_Base_Start_IT                             obj/stm32f3xx_hal_tim.o
-                                                  obj/main.o
+                                                  obj/timer.o
 HAL_TIM_Base_Stop                                 obj/stm32f3xx_hal_tim.o
 HAL_TIM_Base_Stop_DMA                             obj/stm32f3xx_hal_tim.o
 HAL_TIM_Base_Stop_IT                              obj/stm32f3xx_hal_tim.o
@@ -2009,7 +2168,7 @@ HAL_TIM_IC_Stop                                   obj/stm32f3xx_hal_tim.o
 HAL_TIM_IC_Stop_DMA                               obj/stm32f3xx_hal_tim.o
 HAL_TIM_IC_Stop_IT                                obj/stm32f3xx_hal_tim.o
 HAL_TIM_IRQHandler                                obj/stm32f3xx_hal_tim.o
-                                                  obj/main.o
+                                                  obj/timer.o
 HAL_TIM_OC_ConfigChannel                          obj/stm32f3xx_hal_tim_ex.o
                                                   obj/stm32f3xx_hal_tim.o
 HAL_TIM_OC_DeInit                                 obj/stm32f3xx_hal_tim.o
@@ -2064,15 +2223,21 @@ HardFault_Handler                                 obj/stm32f3xx_it.o
 I2C1_ER_IRQHandler                                obj/startup_stm32f334x8.o
 I2C1_EV_IRQHandler                                obj/startup_stm32f334x8.o
 LED1_OFF                                          obj/led.o
+                                                  obj/adc.o
                                                   obj/misc.o
 LED1_ON                                           obj/led.o
+                                                  obj/adc.o
                                                   obj/misc.o
 LED1_Toggle                                       obj/led.o
 LED2_OFF                                          obj/led.o
+                                                  obj/button.o
                                                   obj/misc.o
 LED2_ON                                           obj/led.o
+                                                  obj/button.o
                                                   obj/misc.o
 LED2_Toggle                                       obj/led.o
+LED_Init                                          obj/led.o
+                                                  obj/main.o
 LED_PIN                                           obj/stm32f3xx_nucleo.o
 LED_PORT                                          obj/stm32f3xx_nucleo.o
 MemManage_Handler                                 obj/stm32f3xx_it.o
@@ -2105,8 +2270,8 @@ TIM1_BRK_TIM15_IRQHandler                         obj/startup_stm32f334x8.o
 TIM1_CC_IRQHandler                                obj/startup_stm32f334x8.o
 TIM1_TRG_COM_TIM17_IRQHandler                     obj/startup_stm32f334x8.o
 TIM1_UP_TIM16_IRQHandler                          obj/startup_stm32f334x8.o
-TIM2_IRQHandler                                   obj/main.o
-TIM2_Start                                        obj/main.o
+TIM2_IRQHandler                                   obj/timer.o
+TIM2_Start                                        obj/timer.o
 TIM3_IRQHandler                                   obj/startup_stm32f334x8.o
 TIM6_DAC1_IRQHandler                              obj/startup_stm32f334x8.o
 TIM7_DAC2_IRQHandler                              obj/startup_stm32f334x8.o
@@ -2137,19 +2302,42 @@ _ITM_registerTMCloneTable                         /mnt/flame/soft/stm32/toolchai
 _Jv_RegisterClasses                               /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/crtbegin.o
 __TMC_END__                                       /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/crtend.o
                                                   /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/crtbegin.o
+__adddf3                                          /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_arm_addsubdf3.o)
+__aeabi_d2iz                                      /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_arm_fixdfsi.o)
+                                                  obj/adc.o
+__aeabi_dadd                                      /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_arm_addsubdf3.o)
+__aeabi_ddiv                                      /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_arm_muldivdf3.o)
+                                                  obj/adc.o
+__aeabi_dmul                                      /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_arm_muldivdf3.o)
+                                                  obj/adc.o
+__aeabi_drsub                                     /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_arm_addsubdf3.o)
+__aeabi_dsub                                      /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_arm_addsubdf3.o)
+__aeabi_f2d                                       /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_arm_addsubdf3.o)
+                                                  obj/adc.o
+__aeabi_i2d                                       /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_arm_addsubdf3.o)
+__aeabi_l2d                                       /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_arm_addsubdf3.o)
 __aeabi_llsr                                      /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_lshrdi3.o)
                                                   obj/stm32f3xx_hal_flash.o
+__aeabi_ui2d                                      /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_arm_addsubdf3.o)
+__aeabi_ul2d                                      /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_arm_addsubdf3.o)
 __bss_end__                                       /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/crt0.o
 __bss_start__                                     /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/crt0.o
 __call_exitprocs                                  /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/libc.a(lib_a-__call_atexit.o)
                                                   /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/libc.a(lib_a-exit.o)
 __deregister_frame_info                           /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/crtbegin.o
+__divdf3                                          /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_arm_muldivdf3.o)
 __dso_handle                                      /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/crtbegin.o
 __end__                                           /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/crt0.o
 __errno                                           /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/libc.a(lib_a-errno.o)
                                                   /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/libc.a(lib_a-syscalls.o)
+__extendsfdf2                                     /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_arm_addsubdf3.o)
 __fini_array_end                                  /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/libc.a(lib_a-fini.o)
 __fini_array_start                                /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/libc.a(lib_a-fini.o)
+__fixdfsi                                         /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_arm_fixdfsi.o)
+__floatdidf                                       /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_arm_addsubdf3.o)
+__floatsidf                                       /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_arm_addsubdf3.o)
+__floatundidf                                     /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_arm_addsubdf3.o)
+__floatunsidf                                     /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_arm_addsubdf3.o)
 __fp_lock_all                                     /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/libc.a(lib_a-findfp.o)
 __fp_unlock_all                                   /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/libc.a(lib_a-findfp.o)
 __init_array_end                                  /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/libc.a(lib_a-init.o)
@@ -2178,6 +2366,7 @@ __malloc_trim_threshold                           /mnt/flame/soft/stm32/toolchai
 __malloc_unlock                                   /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/libc.a(lib_a-mlock.o)
                                                   /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/libc.a(lib_a-freer.o)
                                                   /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/libc.a(lib_a-mallocr.o)
+__muldf3                                          /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_arm_muldivdf3.o)
 __preinit_array_end                               /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/libc.a(lib_a-init.o)
 __preinit_array_start                             /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/libc.a(lib_a-init.o)
 __register_exitproc                               /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/libc.a(lib_a-__atexit.o)
@@ -2204,6 +2393,7 @@ __sread                                           /mnt/flame/soft/stm32/toolchai
 __sseek                                           /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/libc.a(lib_a-stdio.o)
                                                   /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/libc.a(lib_a-findfp.o)
 __stack_base__                                    /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/crt0.o
+__subdf3                                          /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/libgcc.a(_arm_addsubdf3.o)
 __swrite                                          /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/libc.a(lib_a-stdio.o)
                                                   /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/libc.a(lib_a-findfp.o)
 _cleanup                                          /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/libc.a(lib_a-findfp.o)
@@ -2291,13 +2481,14 @@ _write                                            /mnt/flame/soft/stm32/toolchai
                                                   /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/libc.a(lib_a-writer.o)
 _write_r                                          /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/libc.a(lib_a-writer.o)
                                                   /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/libc.a(lib_a-stdio.o)
-adcChannelFinished                                obj/main.o
-adc_init                                          obj/main.o
 atexit                                            /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/libc.a(lib_a-atexit.o)
                                                   /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/crt0.o
 cleanup_glue                                      /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/libc.a(lib_a-reent.o)
-distortion                                        obj/main.o
-distortionEnabled                                 obj/main.o
+dacChannel                                        obj/dac.o
+dacHandle                                         obj/dac.o
+distortion                                        obj/adc.o
+distortionEnabled                                 obj/button.o
+                                                  obj/adc.o
 end                                               /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/libc.a(lib_a-syscalls.o)
 errno                                             /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/libc.a(lib_a-reent.o)
                                                   /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/libc.a(lib_a-readr.o)
@@ -2323,7 +2514,7 @@ memset                                            /mnt/flame/soft/stm32/toolchai
                                                   /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/libc.a(lib_a-syscalls.o)
                                                   /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/crt0.o
 pFlash                                            obj/stm32f3xx_hal_flash.o
-pc3_int_init                                      obj/main.o
 start                                             /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/crt0.o
 strlen                                            /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/libc.a(lib_a-strlen.o)
                                                   /mnt/flame/soft/stm32/toolchain/lib/gcc/arm-none-eabi/4.9.2/../../../../arm-none-eabi/lib/libc.a(lib_a-syscalls.o)
+tim2handle                                        obj/timer.o
